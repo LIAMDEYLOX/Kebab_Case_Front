@@ -3,9 +3,9 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  standalone: true,
+  templateUrl : './app.component.php',
+  styleUrls: ['./app.component.scss'],	
 })
 export class AppComponent {
   title = 'Kebab_Case_Front';
