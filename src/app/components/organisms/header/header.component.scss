@@ -1,0 +1,18 @@
+header {
+    position: relative;
+    display: flex; 
+    flex-wrap: wrap;
+    align-items: center; 
+    padding: 10px;
+    width: 100%;
+}
+
+app-searchbar, app-settings {
+    position: relative; 
+}
+
+.nom-site {
+    font-size: 3rem;
+    font-family: Montserrat Subrayada;
+    color: #6B3E26;
+}

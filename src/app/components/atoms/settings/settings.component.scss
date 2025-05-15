@@ -1,0 +1,38 @@
+.settings-container {
+    width: 75px;
+    height: 75px;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #D9A85B;
+    background-color: rgba(241, 210, 159, 0.5);
+    transition: background-color 0.2s ease-in-out;
+    margin-right: 10px;
+}
+
+.settings-container:hover {
+    background-color: rgba(241, 210, 159, 0.6);
+    cursor: pointer;
+}
+
+.settings-bar {
+    position: absolute;
+    background-color: #6b3e26b9; 
+    margin: 15px auto; 
+    height: 4px; 
+    width: 50px;
+    border-radius: 2px;  
+}
+
+/* Add specific positioning for each bar */
+.settings-bar:nth-child(1) {
+    position: relative;
+}
+
+.settings-bar:nth-child(2) {
+    position: relative;
+}
+
+.settings-bar:nth-child(3) {
+    position: relative;
+}

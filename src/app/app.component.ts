@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/organisms/header/header.component';
+import { HeadComponent } from './components/atoms/head/head.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [RouterOutlet, HeaderComponent, HeadComponent],
   templateUrl : './app.component.php',
-  styleUrls: ['./app.component.scss'],	
+  styleUrl: './app.component.scss'	
 })
 export class AppComponent {
   title = 'Kebab_Case_Front';

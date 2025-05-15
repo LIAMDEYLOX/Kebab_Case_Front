@@ -1,1 +1,3 @@
-<h1>hello world</h1>
+<router-outlet></router-outlet>
+<app-head></app-head>
+<app-header></app-header>
