@@ -1,0 +1,31 @@
+.nav-menu-container {
+    padding-top: 10px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    background-color: #EFE2C5;
+    width: 250px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+a {
+    font-family: 'Lily Script One', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6B3E26;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+hr {
+    border: none;
+    background-color: #6B3E26;
+    height: 1.3px;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+

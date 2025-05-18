@@ -3,12 +3,9 @@ header {
     display: flex; 
     flex-wrap: wrap;
     align-items: center; 
-    justify-content: space-between;
     width: 100%;
-    margin-right: 1%;
-    margin-left: 1%;
-    padding-right: 1%;
 }
+
 
 .nom-site {
     font-size: 3rem;
@@ -17,16 +14,15 @@ header {
 }
 
 hr {
-    height: 2px;
-    width: 98%;
+    height: 1.4px;
     background-color: #6B3E26; 
     border: none; 
 }
 
-
 app-searchbar, .searchbar-container {
     flex: 1;
     width: 100%;
-    max-width: calc(100% - 20px); 
+    max-width: calc(100% - 20px);
     margin-left: auto;
+    margin-right: 20px;
 }
