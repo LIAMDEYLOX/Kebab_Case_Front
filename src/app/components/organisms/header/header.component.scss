@@ -3,16 +3,30 @@ header {
     display: flex; 
     flex-wrap: wrap;
     align-items: center; 
-    padding: 10px;
+    justify-content: space-between;
     width: 100%;
-}
-
-app-searchbar, app-settings {
-    position: relative; 
+    margin-right: 1%;
+    margin-left: 1%;
+    padding-right: 1%;
 }
 
 .nom-site {
     font-size: 3rem;
     font-family: Montserrat Subrayada;
     color: #6B3E26;
+}
+
+hr {
+    height: 2px;
+    width: 98%;
+    background-color: #6B3E26; 
+    border: none; 
+}
+
+
+app-searchbar, .searchbar-container {
+    flex: 1;
+    width: 100%;
+    max-width: calc(100% - 20px); 
+    margin-left: auto;
 }

@@ -1,0 +1,41 @@
+.footer-container {
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer {
+    background-color: #D9A85B;
+    min-height: 250px;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    overflow: visible;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    border: none;
+    background-color: #6B3E26; 
+    height: 2px;
+    width: 93%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.nav-up-wrapper {
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    height: 45px;
+}

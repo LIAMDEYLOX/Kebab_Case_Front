@@ -1,0 +1,20 @@
+.background {
+    position: relative;
+    height: 65px;
+    width: 65px;
+    border-radius: 100%;
+    background-color: #C26943;
+    margin-left: 20px;
+    margin-right: calc(1vw);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-icon {
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}

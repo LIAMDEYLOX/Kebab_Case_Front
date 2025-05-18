@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LinkComponent } from './link.component';
+import { IconYoutubeComponent } from './icon-youtube.component';
 
-describe('LinkComponent', () => {
-  let component: LinkComponent;
-  let fixture: ComponentFixture<LinkComponent>;
+describe('IconYoutubeComponent', () => {
+  let component: IconYoutubeComponent;
+  let fixture: ComponentFixture<IconYoutubeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LinkComponent]
+      imports: [IconYoutubeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LinkComponent);
+    fixture = TestBed.createComponent(IconYoutubeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

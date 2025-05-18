@@ -1,3 +1,6 @@
 <router-outlet></router-outlet>
 <app-head></app-head>
-<app-header></app-header>
+<div class="content">
+  <app-header></app-header>
+</div>
+<app-footer></app-footer>
