@@ -1,7 +1,12 @@
-<div class="nav-menu-container">
-    <a>Menu de la semaine</a>
-    <hr>
-    <a>À la une</a>
-    <hr>
-    <a> Anti-Gaspi</a>
+<div class="nav-menu-wrapper" 
+     [class.active]="isOpen"
+     (mouseenter)="onMouseEnter()" 
+     (mouseleave)="onMouseLeave()">
+    <div class="nav-menu-container">
+        <a>Menu de la semaine</a>
+        <hr>
+        <a>À la une</a>
+        <hr>
+        <a>Anti-Gaspi</a>
+    </div>
 </div>

@@ -1,0 +1,26 @@
+.recipe-ingredients-container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    box-sizing: border-box; 
+    position: relative; 
+    min-width: 1300px;
+    width: 98%;
+    height: auto;
+    font-family : inter ,sans-serif;
+    left: 20px;
+    font-size : 1.5rem;
+}
+
+.recipe-ingredients {
+    left: 20px;
+    position: relative;
+    text-align: left;
+    font-size : 1.7rem;
+    font-family : inter ,sans-serif;
+}
+
+.split-ingredients {
+    margin-right: 50px;
+    margin-left: 50px;
+}

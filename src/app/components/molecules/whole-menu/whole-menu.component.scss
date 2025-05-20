@@ -1,3 +1,26 @@
 .whole-menu-container {
-    width: 250px;
+    position: fixed;
+    top: 120px; 
+    left: 1%;
+    width: 10px; 
+    z-index: 950; 
+    overflow: visible;
+    transition: width 0.3s ease-in-out;
+
+    /* Masquer spécifiquement les barres de défilement sans empêcher le débordement */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
 }
+
+
+
+.whole-menu-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ajoutez les styles pour l'état actif */
+.whole-menu-container.active {
+  /* Styles pour le menu déplié (ajustez selon vos besoins) */
+  width: 250px;
+}
+

@@ -2,6 +2,8 @@
     position: relative;
     width: 100%;
     margin-top: auto;
+    overflow: visible;
+    padding-bottom: 25px; 
 }
 
 footer {
@@ -15,10 +17,11 @@ footer {
     box-sizing: border-box;
     left: 0;
     right: 0;
-    overflow: visible;
+    overflow: hidden; 
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
+    max-width: 100vw;
 }
 
 hr {
@@ -32,10 +35,12 @@ hr {
 
 .nav-up-wrapper {
     position: absolute;
-    bottom: -22px;
+    bottom: 0; /* Modifié: positionne le wrapper à la bordure inférieure du footer */
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
     height: 45px;
+    z-index: 1500; /* Augmenté pour s'assurer qu'il est au-dessus de tout */
+    overflow: visible;
 }

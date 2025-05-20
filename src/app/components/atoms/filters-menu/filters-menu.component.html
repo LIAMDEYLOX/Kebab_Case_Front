@@ -1,4 +1,8 @@
-<div class="filters-menu-wrapper">
+<div class="filters-menu-wrapper" 
+     [class.active]="isOpen"
+     (mouseenter)="onMouseEnter()" 
+     (mouseleave)="onMouseLeave()">
+    <!-- Hitbox étendue invisible -->
     <div class="filters-menu-container">
         <div class="filters-content">
         <!-- Filtres principaux (toujours visibles) -->
@@ -60,7 +64,7 @@
                     <input type="checkbox" id="filter-country-4" class="filter-checkbox">
                     <label for="filter-type-4">Coréennes</label>
                 </div>
-                 <div class="filter-option">
+                <div class="filter-option">
                     <input type="checkbox" id="filter-country-5" class="filter-checkbox">
                     <label for="filter-type-5">Espagnoles</label>
                 </div>
@@ -68,7 +72,7 @@
                     <input type="checkbox" id="filter-country-6" class="filter-checkbox">
                     <label for="filter-type-6">Espagnoles</label>
                 </div>
-                 <div class="filter-option">
+                <div class="filter-option">
                     <input type="checkbox" id="filter-country-7" class="filter-checkbox">
                     <label for="filter-type-7">Françaises</label>
                 </div>
@@ -94,7 +98,7 @@
 
             <div class="split"></div>
 
-                <!-- Filtres supplémentaires (affichés au survol) -->
+            <!-- Filtres supplémentaires (affichés au survol) -->
             <div class="additional-filters">
                 <div class="filter-category">Budget</div>
                 <div class="filter-option">
@@ -144,7 +148,7 @@
                     <input type="checkbox" id="filter-party-4" class="filter-checkbox">
                     <label for="filter-type-4">Saint-Valentin</label>
                 </div>
-                 <div class="filter-option">
+                <div class="filter-option">
                     <input type="checkbox" id="filter-party-5" class="filter-checkbox">
                     <label for="filter-type-5">Chandeleur</label>
                 </div>
@@ -152,7 +156,7 @@
                     <input type="checkbox" id="filter-party-6" class="filter-checkbox">
                     <label for="filter-type-6">Ramadan</label>
                 </div>
-                 <div class="filter-option">
+                <div class="filter-option">
                     <input type="checkbox" id="filter-party-7" class="filter-checkbox">
                     <label for="filter-type-7">Mardi Gras</label>
                 </div>

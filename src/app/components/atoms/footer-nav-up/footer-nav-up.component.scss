@@ -1,8 +1,7 @@
 .footer-nav-up-container {
-    position: relative; /* Changé de absolute à relative */
-    margin-bottom: -20px; /* Utilise une marge négative au lieu de bottom */
-    margin-top: auto; /* Pousse le bouton vers le bas du footer */
+    position: absolute;
     left: 50%;
+    bottom: 5px;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
@@ -13,8 +12,8 @@
     width: 45px;
     height: 45px;
     transition: transform 0.2s ease;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Ombre ajustée pour l'effet de dépassement */
+    z-index: 1500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); 
     
     &:hover {
         transform: translateX(-50%) translateY(-5px);
@@ -26,7 +25,7 @@
 }
 
 .footer-nav-up-icon {
-    width: 30px; /* Réduit pour mieux s'adapter au conteneur */
+    width: 30px; 
     height: 30px;
     object-fit: contain;
 }

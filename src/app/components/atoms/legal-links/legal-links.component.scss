@@ -6,6 +6,9 @@
     color: #6B3E26;
     font-family: 'Inter', sans-serif;
     margin-bottom: 10px;
+    flex-wrap: wrap; 
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .dot {
