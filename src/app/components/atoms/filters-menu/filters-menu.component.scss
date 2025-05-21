@@ -6,7 +6,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
     transform-origin: left center;
     overflow: hidden;
     position: absolute;
@@ -18,7 +18,7 @@
     width: 10px; 
     height: 610px;
     margin-bottom: 30px;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
     
     &::before {
         content: '';
@@ -53,7 +53,7 @@
     width: 270px;
     padding-left: 40px;
     opacity: 0;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
     transition-delay: 0.1s;
 }
 
@@ -98,9 +98,10 @@
     left: 260px;
     pointer-events: none; 
     width: 1.5px; 
-    height: 95%; 
+    top: 2vh;
+    height: 62vh; 
     border-radius: 5px;
     background-color: #6B3E26; 
     opacity: 0.5;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
 }

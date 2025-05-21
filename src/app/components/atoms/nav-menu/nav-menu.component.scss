@@ -1,24 +1,23 @@
 .nav-menu-container {
-    padding: 15px 5px 20px 5px;
+    padding: 5px 5px 5px 5px;
     border-radius: 10px;
     background-color: #EFE2C5;
     width: 20px; 
     height: auto;
     margin-bottom: 15px;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
     transform-origin: left center;
     overflow: hidden;
     z-index: 10;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
 }
 
 .nav-menu-wrapper {
     position: relative;
     width: 10px; 
     height: 195px;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
     
     &::before {
         content: '';
@@ -33,11 +32,11 @@
 
 .nav-menu-wrapper:hover .nav-menu-container,
 .nav-menu-wrapper.active .nav-menu-container {
-    width: 250px;
+    width:530px;
     align-items: center;
 }
 
-a {
+.nav-menu a {
     font-family: 'Lily Script One', sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
@@ -51,7 +50,7 @@ a {
     text-overflow: ellipsis;
     margin: 0px 0; 
     flex-shrink: 0; 
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: margin 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
     transform-origin: left center;
     margin-left: 0;
 }
@@ -69,7 +68,7 @@ hr {
     width: 80%;
     margin-top: 7px;
     margin-bottom: 10px;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: margin 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
     transform-origin: left center;
     margin-left: 15px;
 }
@@ -78,4 +77,75 @@ hr {
 .nav-menu-wrapper.active hr {
     margin-left: auto;
     margin-right: auto;
+}
+
+.split-menu {
+    position: relative;
+    width: 2px;
+    height: 140px; 
+    left: 8px;
+    background-color: #6B3E26;
+    opacity: 0; 
+    transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
+    margin: 0 5px; 
+    flex-shrink: 0; 
+    display: block; 
+}
+
+.nav-menu-wrapper:hover .split-menu,
+.nav-menu-wrapper.active .split-menu {
+    opacity: 0.5; 
+}
+
+// Utiliser une classe unique pour le conteneur
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+
+.main-page-nav a {
+    font-family: 'Lily Script One', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #6B3E26;
+    text-decoration: none;
+    display: block; 
+    width: 232px; 
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px 0; 
+    flex-shrink: 0; 
+    transition: margin 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
+    transform-origin: left center;
+    margin-left: 0;
+}
+
+.main-page-nav {
+    margin-left: 25px; 
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-menu-wrapper:hover .main-page-nav,
+.nav-menu-wrapper.active .main-page-nav {
+    opacity: 1;
+    transform: translateX(-10px); 
+    transition-delay: 0.1s; 
+}
+
+.nav-menu-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start; 
 }
