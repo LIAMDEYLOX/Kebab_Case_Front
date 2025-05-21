@@ -1,10 +1,19 @@
 .recipe-prez {
-    width: 98%;
+    width: 88vw;
     height: auto;
     box-sizing: border-box;
     text-align: left; 
     position: relative; 
     font-family : inter ,sans-serif;
-    left: 20px;
-    font-size : 1.5rem;
+    font-size : 1.7rem;
+    color: #6B3E26;
+}
+
+.recipe-prez-container {
+    margin-top: 30px;
+    border-radius: 20px;
+    border: 2px solid #EFE2C5; 
+    padding-left : 20px;
+    padding-right : 10px;
+    box-shadow: 0 4px 8px rgba(107, 62, 38, 0.15); 
 }

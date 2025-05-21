@@ -1,12 +1,23 @@
 .recipe-ingredients-container {
     display: flex;
-    flex-wrap: wrap;
-    text-align: center;
+    flex-direction: column;
     box-sizing: border-box; 
     position: relative; 
-    min-width: 1300px;
-    width: 98%;
+    width: 13vw;
+    height: 65vh;
+    font-family : inter ,sans-serif;
+    left: 20px;
+    font-size : 1.5rem;
+}
+
+.recipe-ingredients-units-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; 
+    position: relative; 
+    width: 7vw;
     height: auto;
+    max-height: 65vh;
     font-family : inter ,sans-serif;
     left: 20px;
     font-size : 1.5rem;
@@ -23,4 +34,41 @@
 .split-ingredients {
     margin-right: 50px;
     margin-left: 50px;
+}
+
+.ingredient {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.ingredients-organizer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #EFE2C5;
+    height: auto;
+    max-height: 65vh;
+    margin: 10px;
+    padding: 15px;
+    padding-bottom: 0;
+    border-radius: 10px;
+    overflow: visible;
+    margin-top: 70px;
+}
+
+
+.split-ingredient {
+    position: relative;
+    height: 1.5px; 
+    width: 17vw; 
+    left: -10px;
+    border-radius: 5px;
+    background-color: #6B3E26; 
+    opacity: 0.5;
+    border: none;
 }
