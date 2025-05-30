@@ -2,8 +2,8 @@
     padding: 5px 10px 25px;
     border-radius: 10px;
     background-color: #EFE2C5;
-    width: 10px;
-    height: 100%;
+    width: 1vw;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
@@ -15,8 +15,8 @@
 
 .filters-menu-wrapper {
     position: relative;
-    width: 10px; 
-    height: 610px;
+    width: 1vw; 
+    height: 60vh;
     margin-bottom: 30px;
     transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
     
@@ -35,26 +35,28 @@
 
 .filters-menu-wrapper:hover .filters-menu-container,
 .filters-menu-wrapper.active .filters-menu-container {
-    width: 530px;
+    width: 540px;
+    max-width: 95vw; 
 }
 
 .filters-content {
     display: flex;
-    width: 550px;
+    width: 500px; 
 }
 
 .main-filters {
-    width: 250px;
+    width: 240px;
     flex-shrink: 0;
     padding-left: 30px;
 }
 
 .additional-filters {
-    width: 270px;
+    width: 240px;
     padding-left: 40px;
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
     transition-delay: 0.1s;
+    flex-shrink: 0; 
 }
 
 .filters-menu-wrapper:hover .additional-filters,
@@ -82,7 +84,7 @@
     color: #6B3E26;
     margin-bottom: 8px;
     margin-top: 10px;
-    font-size: 1.25rem;
+    font-size: 1.1rem; 
 }
 
 .filter-option {
@@ -90,12 +92,12 @@
     align-items: center;
     margin-bottom: 3px;
     color: #6B3E26;
-    font-size: 1.05rem;
+    font-size: 1rem; 
 }
 
 .split {
     position: absolute;
-    left: 260px;
+    left: 250px;
     pointer-events: none; 
     width: 1.5px; 
     top: 2vh;

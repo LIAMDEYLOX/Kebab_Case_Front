@@ -15,8 +15,8 @@
 
 .nav-menu-wrapper {
     position: relative;
-    width: 10px; 
-    height: 195px;
+    width: 1vw; 
+    height: 21vh;
     transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
     
     &::before {
@@ -32,18 +32,18 @@
 
 .nav-menu-wrapper:hover .nav-menu-container,
 .nav-menu-wrapper.active .nav-menu-container {
-    width:530px;
+    width: 540px;
     align-items: center;
 }
 
 .nav-menu a {
     font-family: 'Lily Script One', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.5rem;  
     font-weight: bold;
     color: #6B3E26;
     text-decoration: none;
     display: block; 
-    width: 232px; 
+    width: 230px; 
     text-align: center;
     white-space: nowrap; 
     overflow: hidden;
@@ -82,7 +82,7 @@ hr {
 .split-menu {
     position: relative;
     width: 2px;
-    height: 140px; 
+    height: 14vh; 
     left: 8px;
     background-color: #6B3E26;
     opacity: 0; 
@@ -110,12 +110,12 @@ hr {
 
 .main-page-nav a {
     font-family: 'Lily Script One', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.5rem;  
     font-weight: bold;
     color: #6B3E26;
     text-decoration: none;
     display: block; 
-    width: 232px; 
+    width: 250px; 
     text-align: center;
     white-space: nowrap; 
     overflow: hidden;

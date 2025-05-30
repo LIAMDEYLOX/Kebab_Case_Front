@@ -1,7 +1,7 @@
 <div class="nav-menu-wrapper" 
-     [class.active]="isOpen"
-     (mouseenter)="onMouseEnter()" 
-     (mouseleave)="onMouseLeave()">
+    [class.active]="isOpen"
+    (mouseenter)="onMouseEnter()" 
+    (mouseleave)="onMouseLeave()">
     <div class="nav-menu-container">
         <div class="nav-menu">
             <a>Menu de la semaine</a>
@@ -12,7 +12,7 @@
         </div>
         <div class="split-menu"></div>
         <div class="main-page-nav">
-            <a>Accueil</a>
+            <a (click)="navigateToHome()" style="cursor: pointer;">Accueil</a>
         </div>
     </div>
 </div>
