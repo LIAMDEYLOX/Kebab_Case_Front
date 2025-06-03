@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Recette1Component } from '../../../atoms/main-page-atoms/recettes-du-jour/recette-1/recette-1.component';
-import { Recette2Component } from '../../../atoms/main-page-atoms/recettes-du-jour/recette-2/recette-2.component';
-import { Recette3Component } from '../../../atoms/main-page-atoms/recettes-du-jour/recette-3/recette-3.component';
+import { RecetteDuJour1Component } from '../../../atoms/main-page-atoms/recettes-du-jour/recette-du-jour-1/recette-du-jour-1.component';
+import { RecetteDuJour2Component } from '../../../atoms/main-page-atoms/recettes-du-jour/recette-du-jour-2/recette-du-jour-2.component';
+import { RecetteDuJour3Component } from '../../../atoms/main-page-atoms/recettes-du-jour/recette-du-jour-3/recette-du-jour-3.component';
 
 @Component({
   selector: 'app-recettes-du-jour',
   standalone: true,
-  imports: [Recette1Component, Recette2Component, Recette3Component],
+  imports: [RecetteDuJour1Component, RecetteDuJour2Component, RecetteDuJour3Component],
   templateUrl: './recettes-du-jour.component.html',
   styleUrl: './recettes-du-jour.component.scss'
 })

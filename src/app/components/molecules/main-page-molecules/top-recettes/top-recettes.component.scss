@@ -1,0 +1,24 @@
+.recettes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.recettes-en-ligne {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+hr {
+    height: 1.4px;
+    width: 100%;
+    background-color: #6B3E26; 
+    border: none;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5rem;
+}

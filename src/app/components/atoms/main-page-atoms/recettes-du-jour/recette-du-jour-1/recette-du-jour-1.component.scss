@@ -1,10 +1,11 @@
 .container {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 25vw;
-    height: 50vh;
+    height: 40vh;
     background-color: #EFE2C5;
     border-radius: 10px;
     border: 2px solid #7a5d4d;
@@ -28,7 +29,7 @@
 
 img {
     width: 100%;
-    height: 60%;
+    height: 90%;
     border-radius: 8px 8px 0 0;
     top : 0px;
     object-fit: cover;
@@ -41,11 +42,11 @@ img {
     width: 100%;
     background: rgba(107, 62, 38, 0.85);
     color: white;
-    padding: 15px;
+    padding: 10px;
     transform: translateY(80%);
     transition: all 0.3s ease-in-out;
     opacity: 0.8;
-    height: 50%;
+    height: 51%;
     display: flex;
     flex-direction: column;
     
@@ -60,3 +61,4 @@ img {
         font-size: 0.9rem;
     }
 }
+
