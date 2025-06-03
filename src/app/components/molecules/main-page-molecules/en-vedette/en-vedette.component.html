@@ -1,0 +1,44 @@
+<div class="section-header">
+    <h2>En vedette</h2>
+    <hr>
+</div>
+<div class="carousel-container">
+    <div class="carousel-wrapper">
+        <div class="carousel-track" [style.transform]="'translateX(' + (-currentIndex * 25) + '%)'">
+            <div class="carousel-slide">
+                <app-recette-en-vedette-1></app-recette-en-vedette-1>
+            </div>
+            <div class="carousel-slide">
+                <app-recette-en-vedette-2></app-recette-en-vedette-2>
+            </div>
+            <div class="carousel-slide">
+                <app-recette-en-vedette-3></app-recette-en-vedette-3>
+            </div>
+            <div class="carousel-slide">
+                <app-recette-en-vedette-4></app-recette-en-vedette-4>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-indicators">
+        <button 
+            class="indicator"
+            [class.active]="currentIndex === 0"
+            (click)="goToSlide(0)">
+        </button>
+        <button 
+            class="indicator"
+            [class.active]="currentIndex === 1"
+            (click)="goToSlide(1)">
+        </button>
+        <button 
+            class="indicator"
+            [class.active]="currentIndex === 2"
+            (click)="goToSlide(2)">
+        </button>
+        <button 
+            class="indicator"
+            [class.active]="currentIndex === 3"
+            (click)="goToSlide(3)">
+        </button>
+    </div>
+</div>
