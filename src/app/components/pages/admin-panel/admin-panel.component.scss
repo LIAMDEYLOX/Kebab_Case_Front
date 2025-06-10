@@ -1,0 +1,390 @@
+.admin-container {
+  font-family: 'inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 94vw;
+  border-radius: 10px;
+  background-color: #D9A85B;
+  margin-top: 150px;
+  margin-bottom: 40px;
+  margin-left: 3vw;
+}
+
+.admin-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 35px;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  border: 1px solid rgba(217, 168, 91, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #D9A85B;
+    border-radius: 3px;
+  }
+}
+
+h2 {
+  color: #C26943;
+  margin-bottom: 20px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #333;
+  margin: 20px 0 15px;
+  font-weight: 500;
+}
+
+// Tabs
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &.active {
+    background-color: #D9A85B;
+    color: white;
+  }
+
+  &.back-button {
+    margin-left: auto;
+    background-color: #6c757d;
+    color: white;
+
+    &:hover {
+      background-color: darken(#6c757d, 8%);
+    }
+  }
+}
+
+// Tab content
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Users table
+.users-table-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  th {
+    background-color: #f9f9f9;
+    font-weight: 500;
+    color: #333;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+
+    &.verified {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    &.not-verified {
+      background-color: #fdecea;
+      color: #e74c3c;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .action-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.edit {
+      background-color: #D9A85B;
+      color: white;
+
+      &:hover {
+        background-color: darken(#D9A85B, 8%);
+      }
+    }
+
+    &.delete {
+      background-color: #e74c3c;
+      color: white;
+
+      &:hover {
+        background-color: darken(#e74c3c, 8%);
+      }
+    }
+  }
+}
+
+// Forms
+.admin-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #D9A85B;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(217, 168, 91, 0.2);
+    }
+  }
+
+  &.checkbox-group {
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #D9A85B;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: darken(#D9A85B, 8%);
+  }
+
+  &:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  &.danger-button {
+    background-color: #e74c3c;
+
+    &:hover {
+      background-color: darken(#e74c3c, 8%);
+    }
+  }
+}
+
+// Messages
+.success-message, .error-message, .loading-indicator, .no-data-message {
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  background-color: #edf7ed;
+  border-left: 4px solid #4caf50;
+
+  p {
+    color: #2e7d32;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.error-message {
+  background-color: #fdecea;
+  border-left: 4px solid #e74c3c;
+
+  p {
+    color: #e74c3c;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.loading-indicator {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+
+  p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.no-data-message {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  text-align: center;
+
+  p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+// User info
+.user-info {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+// Section divider
+.section-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 30px 0;
+}
+
+// Back link
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .admin-content {
+    padding: 20px;
+  }
+
+  .admin-tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab-button.back-button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .users-table th, .users-table td {
+    padding: 8px;
+  }
+
+  .action-button {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}

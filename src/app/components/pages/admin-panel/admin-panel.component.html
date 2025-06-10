@@ -1,0 +1,320 @@
+<div class="admin-container">
+  <div class="admin-content">
+    <h1>Panneau d'administration</h1>
+
+    <!-- Navigation Tabs -->
+    <div class="admin-tabs">
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'users'"
+        (click)="setActiveTab('users')">
+        Liste des utilisateurs
+      </button>
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'create'"
+        (click)="setActiveTab('create')">
+        Créer un utilisateur
+      </button>
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'profile'"
+        (click)="setActiveTab('profile')">
+        Mon profil
+      </button>
+      <button
+        class="tab-button back-button"
+        routerLink="/dashboard">
+        Retour au tableau de bord
+      </button>
+    </div>
+
+    <!-- Users List Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'users'">
+      <h2>Liste des utilisateurs</h2>
+
+      <!-- Loading indicator -->
+      <div *ngIf="loading.users" class="loading-indicator">
+        <p>Chargement des utilisateurs...</p>
+      </div>
+
+      <!-- Error message -->
+      <div *ngIf="error.users" class="error-message">
+        <p>Erreur lors du chargement des utilisateurs.</p>
+      </div>
+
+      <!-- Success message for delete -->
+      <div *ngIf="success.deleteUser" class="success-message">
+        <p>Utilisateur supprimé avec succès.</p>
+      </div>
+
+      <!-- Users table -->
+      <div *ngIf="!loading.users && !error.users && users.length > 0" class="users-table-container">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Pseudo</th>
+              <th>Email</th>
+              <th>Profil</th>
+              <th>Vérifié</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.iduser }}</td>
+              <td>{{ user.pseudouser }}</td>
+              <td>{{ user.emailuser }}</td>
+              <td>{{ getProfileName(user.idprofile) }}</td>
+              <td>
+                <span class="status" [class.verified]="user.verifiedusers" [class.not-verified]="!user.verifiedusers">
+                  {{ user.verifiedusers ? 'Oui' : 'Non' }}
+                </span>
+              </td>
+              <td class="actions">
+                <button class="action-button edit" (click)="selectUser(user)">Modifier</button>
+                <button class="action-button delete" (click)="deleteUser(user.iduser)">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- No users message -->
+      <div *ngIf="!loading.users && !error.users && users.length === 0" class="no-data-message">
+        <p>Aucun utilisateur trouvé.</p>
+      </div>
+    </div>
+
+    <!-- Create User Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'create'">
+      <h2>Créer un nouvel utilisateur</h2>
+
+      <!-- Success message -->
+      <div *ngIf="success.createUser" class="success-message">
+        <p>Utilisateur créé avec succès.</p>
+      </div>
+
+      <!-- Error message -->
+      <div *ngIf="error.createUser" class="error-message">
+        <p>Erreur lors de la création de l'utilisateur.</p>
+        <p *ngIf="error.createUser.detail">{{ error.createUser.detail }}</p>
+      </div>
+
+      <!-- Create user form -->
+      <form (ngSubmit)="createUser()" class="admin-form">
+        <div class="form-group">
+          <label for="pseudouser">Pseudo</label>
+          <input
+            type="text"
+            id="pseudouser"
+            name="pseudouser"
+            [(ngModel)]="newUser.pseudouser"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="emailuser">Email</label>
+          <input
+            type="email"
+            id="emailuser"
+            name="emailuser"
+            [(ngModel)]="newUser.emailuser"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="newUser.password"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="idprofile">Profil</label>
+          <select
+            id="idprofile"
+            name="idprofile"
+            [(ngModel)]="newUser.idprofile"
+            required>
+            <option *ngFor="let profile of profiles" [value]="profile.idprofil">
+              {{ profile.nameprofil }}
+            </option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="loading.createUser || !newUser.pseudouser || !newUser.emailuser || !newUser.password">
+          <span *ngIf="!loading.createUser">Créer l'utilisateur</span>
+          <span *ngIf="loading.createUser">Création en cours...</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Edit User Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'edit' && selectedUser">
+      <h2>Modifier l'utilisateur</h2>
+
+      <!-- Success messages -->
+      <div *ngIf="success.updateUser" class="success-message">
+        <p>Utilisateur mis à jour avec succès.</p>
+      </div>
+
+      <div *ngIf="success.resetPassword" class="success-message">
+        <p>Mot de passe réinitialisé avec succès.</p>
+      </div>
+
+      <!-- Error messages -->
+      <div *ngIf="error.updateUser" class="error-message">
+        <p>Erreur lors de la mise à jour de l'utilisateur.</p>
+        <p *ngIf="error.updateUser.detail">{{ error.updateUser.detail }}</p>
+      </div>
+
+      <div *ngIf="error.resetPassword" class="error-message">
+        <p>Erreur lors de la réinitialisation du mot de passe.</p>
+        <p *ngIf="error.resetPassword.detail">{{ error.resetPassword.detail }}</p>
+      </div>
+
+      <!-- User info -->
+      <div class="user-info">
+        <p><strong>ID:</strong> {{ selectedUser.iduser }}</p>
+      </div>
+
+      <!-- Update user form -->
+      <form (ngSubmit)="updateUser()" class="admin-form">
+        <div class="form-group">
+          <label for="edit-pseudouser">Pseudo</label>
+          <input
+            type="text"
+            id="edit-pseudouser"
+            name="pseudouser"
+            [(ngModel)]="updateUserData.pseudouser"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-emailuser">Email</label>
+          <input
+            type="email"
+            id="edit-emailuser"
+            name="emailuser"
+            [(ngModel)]="updateUserData.emailuser"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-idprofile">Profil</label>
+          <select
+            id="edit-idprofile"
+            name="idprofile"
+            [(ngModel)]="updateUserData.idprofile"
+            required>
+            <option *ngFor="let profile of profiles" [value]="profile.idprofil">
+              {{ profile.nameprofil }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input
+              type="checkbox"
+              name="verifiedusers"
+              [(ngModel)]="updateUserData.verifiedusers">
+            Utilisateur vérifié
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="loading.updateUser || !updateUserData.pseudouser || !updateUserData.emailuser">
+          <span *ngIf="!loading.updateUser">Mettre à jour</span>
+          <span *ngIf="loading.updateUser">Mise à jour en cours...</span>
+        </button>
+      </form>
+
+      <!-- Reset password form -->
+      <div class="section-divider"></div>
+
+      <h3>Réinitialiser le mot de passe</h3>
+
+      <form (ngSubmit)="resetPassword()" class="admin-form">
+        <div class="form-group">
+          <label for="new-password">Nouveau mot de passe</label>
+          <input
+            type="password"
+            id="new-password"
+            name="new_password"
+            [(ngModel)]="resetPasswordData.new_password"
+            required>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-button danger-button"
+          [disabled]="loading.resetPassword || !resetPasswordData.new_password">
+          <span *ngIf="!loading.resetPassword">Réinitialiser le mot de passe</span>
+          <span *ngIf="loading.resetPassword">Réinitialisation en cours...</span>
+        </button>
+      </form>
+
+      <button class="back-link" (click)="setActiveTab('users')">
+        Retour à la liste des utilisateurs
+      </button>
+    </div>
+
+    <!-- Profile Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'profile'">
+      <h2>Changer mon mot de passe</h2>
+
+      <!-- Success message -->
+      <div *ngIf="success.changePassword" class="success-message">
+        <p>Mot de passe changé avec succès.</p>
+      </div>
+
+      <!-- Error message -->
+      <div *ngIf="error.changePassword" class="error-message">
+        <p>Erreur lors du changement de mot de passe.</p>
+        <p *ngIf="error.changePassword.detail">{{ error.changePassword.detail }}</p>
+      </div>
+
+      <!-- Change password form -->
+      <form (ngSubmit)="changePassword()" class="admin-form">
+        <div class="form-group">
+          <label for="current-password">Mot de passe actuel</label>
+          <input
+            type="password"
+            id="current-password"
+            name="current_password"
+            [(ngModel)]="changePasswordData.current_password"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="change-new-password">Nouveau mot de passe</label>
+          <input
+            type="password"
+            id="change-new-password"
+            name="new_password"
+            [(ngModel)]="changePasswordData.new_password"
+            required>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="loading.changePassword || !changePasswordData.current_password || !changePasswordData.new_password">
+          <span *ngIf="!loading.changePassword">Changer le mot de passe</span>
+          <span *ngIf="loading.changePassword">Changement en cours...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
