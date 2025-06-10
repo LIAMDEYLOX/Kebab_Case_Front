@@ -1,6 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, PLATFORM_ID, Inject } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
@@ -14,11 +14,20 @@ export class AccountComponent {
   // Track dropdown state
   isDropdownOpen = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   // Close dropdown when clicking outside
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
+    // Skip in server-side rendering
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     // Check if click was outside the account container
     const target = event.target as HTMLElement;
     const accountContainer = document.querySelector('.account-container');

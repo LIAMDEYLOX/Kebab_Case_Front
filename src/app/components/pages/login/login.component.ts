@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, Inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
@@ -32,7 +32,11 @@ export class LoginComponent {
 
   // No longer tracking login attempts as we've removed the automatic retry mechanism
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   // Form submission
   onSubmit() {
@@ -63,7 +67,7 @@ export class LoginComponent {
           this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
         } else if (err.status === 403) {
           this.errorMessage = 'Votre compte n\'a pas les permissions nécessaires.';
-        } else if (!navigator.onLine) {
+        } else if (isPlatformBrowser(this.platformId) && !navigator.onLine) {
           this.errorMessage = 'Pas de connexion internet. Veuillez vérifier votre connexion et réessayer.';
         } else {
           this.errorMessage = 'Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard.';
