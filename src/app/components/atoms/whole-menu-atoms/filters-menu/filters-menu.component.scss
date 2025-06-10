@@ -1,9 +1,9 @@
 .filters-menu-container {
-    padding: 5px 10px 25px;
+    padding: 5px 10px 8px;
     border-radius: 10px;
     background-color: #EFE2C5;
-    width: 1vw;
-    height: 65vh;
+    width: 20px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
@@ -17,7 +17,6 @@
     position: relative;
     width: 1vw; 
     height: 60vh;
-    margin-bottom: 30px;
     transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
     
     &::before {
@@ -31,8 +30,6 @@
     }
 }
 
-
-
 .filters-menu-wrapper:hover .filters-menu-container,
 .filters-menu-wrapper.active .filters-menu-container {
     width: 540px;
@@ -41,69 +38,179 @@
 
 .filters-content {
     display: flex;
-    width: 500px; 
+    width: 500px;
+    height: 100%;
+    gap: 12px;
 }
 
-.main-filters {
-    width: 240px;
+.filters-column {
+    width: 50%;
     flex-shrink: 0;
-    padding-left: 30px;
-}
-
-.additional-filters {
-    width: 250px;
-    padding-left: 50px;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
-    transition-delay: 0.1s;
-    flex-shrink: 0; 
-}
-
-.filters-menu-wrapper:hover .additional-filters,
-.filters-menu-wrapper.active .additional-filters {
-    opacity: 1;
-}
-
-.filters-menu-wrapper.active {
-    // Styles qui s'appliquent quand le menu est actif (même chose que hover)
-    .additional-filters {
-        opacity: 1;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    gap: 1px;
+    
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
 
-.filter-item {
-    margin-bottom: 10px;
-}
-
-.filter-checkbox {
-    margin-right: 10px;
-}
-
-.filter-category {
-    font-weight: bold;
-    color: #6B3E26;
-    margin-bottom: 8px;
-    margin-top: 10px;
-    font-size: 1.1rem; 
-}
-
-.filter-option {
+.filter-section {
+    flex: 1 1 auto;
+    min-height: fit-content;
+    margin-bottom: 0px;
     display: flex;
-    align-items: center;
-    margin-bottom: 3px;
-    color: #6B3E26;
-    font-size: 1rem; 
+    flex-direction: column;
+    
+    // Sections avec plus de contenu prennent plus d'espace
+    &:has(.filter-list li:nth-child(6)) {
+        flex: 2 1 auto;
+    }
+    
+    &:has(.filter-list li:nth-child(4):not(li:nth-child(5))) {
+        flex: 1.5 1 auto;
+    }
+    
+    &:has(.filter-list li:nth-child(3):not(li:nth-child(4))) {
+        flex: 1 1 auto;
+    }
+    
+    .filter-category {
+        font-size: clamp(0.85rem, 1vw, 1rem);
+        color: #6B3E26;
+        font-weight: bold;
+        margin-bottom: 1px;
+        padding-bottom: 1px;
+        border-bottom: 1px solid #D9A85B;
+        line-height: 1.1;
+        flex-shrink: 0;
+    }
+
+    .filter-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        flex: 1 1 auto;
+        min-height: 0;
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+            flex-shrink: 0;
+            
+            .filter-checkbox {
+                width: 12px;
+                height: 12px;
+                accent-color: #D9A85B;
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+            
+            label {
+                font-size: clamp(0.65rem, 0.8vw, 0.8rem);
+                color: #553c2e;
+                cursor: pointer;
+                line-height: 1.1;
+                word-wrap: break-word;
+                hyphens: auto;
+                
+                &:hover {
+                    color: #6B3E26;
+                }
+            }
+        }
+    }
 }
 
-.split {
-    position: absolute;
-    left: 258px;
-    pointer-events: none; 
-    width: 1.5px; 
-    top: 2vh;
-    height: 62vh; 
-    border-radius: 5px;
-    background-color: #6B3E26; 
-    opacity: 0.5;
-    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
+// Media queries pour adaptation responsive
+@media (max-height: 800px) {
+    .filters-menu-wrapper {
+        height: 60vh;
+        margin-bottom: 0;
+    }
+    
+    .filters-column {
+        gap: 0px;
+        padding-left: 12px;
+    }
+    
+    .filter-section {
+        margin-bottom: 0px;
+        
+        .filter-category {
+            font-size: clamp(0.8rem, 0.95vw, 0.95rem);
+            margin-bottom: 1px;
+        }
+        
+        .filter-list {
+            gap: 0px;
+            
+            .filter-option {
+                padding: 0;
+                
+                .filter-checkbox {
+                    width: 10px;
+                    height: 10px;
+                }
+                
+                label {
+                    font-size: clamp(0.6rem, 0.75vw, 0.75rem);
+                    line-height: 1;
+                }
+            }
+        }
+    }
 }
+
+@media (max-height: 600px) {
+    .filters-menu-wrapper {
+        height: 50vh;
+        margin-bottom: 0;
+    }
+    
+    .filters-menu-container {
+        padding: 3px 8px 5px;
+    }
+    
+    .filters-column {
+        gap: 0px;
+        padding-left: 10px;
+    }
+    
+    .filter-section {
+        margin-bottom: 0px;
+        
+        .filter-category {
+            font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+            margin-bottom: 1px;
+        }
+        
+        .filter-list {
+            gap: 0px;
+            
+            .filter-option {
+                padding: 0;
+                
+                .filter-checkbox {
+                    width: 9px;
+                    height: 9px;
+                }
+                
+                label {
+                    font-size: clamp(0.55rem, 0.7vw, 0.7rem);
+                    line-height: 1;
+                }
+            }
+        }
+    }
+}
+

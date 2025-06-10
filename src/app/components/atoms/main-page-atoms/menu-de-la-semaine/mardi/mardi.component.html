@@ -1,0 +1,35 @@
+<div class="jour-container">
+    <div class="jour-header" (click)="toggleExpanded()">
+        <h3>Mardi</h3>
+        <span class="toggle-icon" [class.expanded]="isExpanded">▼</span>
+    </div>
+    
+    <div class="repas-container" [class.show]="isExpanded">
+        <div class="repas">
+            <h4>Petit-déjeuner</h4>
+            <div class="recette-item">
+                <span>Pancakes aux myrtilles</span>
+            </div>
+        </div>
+        
+        <div class="repas">
+            <h4>Déjeuner</h4>
+            <div class="recette-item plat">
+                <span>Quiche lorraine</span>
+            </div>
+            <div class="recette-item dessert">
+                <span>Compote de pommes</span>
+            </div>
+        </div>
+        
+        <div class="repas">
+            <h4>Dîner</h4>
+            <div class="recette-item plat">
+                <span>Curry de légumes</span>
+            </div>
+            <div class="recette-item dessert">
+                <span>Mousse au chocolat</span>
+            </div>
+        </div>
+    </div>
+</div>

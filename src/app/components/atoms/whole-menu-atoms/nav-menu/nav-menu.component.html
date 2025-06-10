@@ -4,15 +4,17 @@
     (mouseleave)="onMouseLeave()">
     <div class="nav-menu-container">
         <div class="nav-menu">
-            <a>Menu de la semaine</a>
+            <a (click)="navigateToRecipesOfDay()" class="nav-link">Recettes du jour</a>
             <hr>
-            <a>À la une</a>
+            <a (click)="navigateToTrending()" class="nav-link">À la une</a>
             <hr>
-            <a>Anti-Gaspi</a>
+            <a (click)="navigateToWeeklyMenu()" class="nav-link">Menu de la semaine</a>
+            <hr>
+            <a (click)="navigateToAntiWaste()" class="nav-link">Anti-Gaspi</a>
         </div>
         <div class="split-menu"></div>
         <div class="main-page-nav">
-            <a (click)="navigateToHome()" style="cursor: pointer;">Accueil</a>
+            <a class="home-link">Accueil</a>
         </div>
     </div>
 </div>
