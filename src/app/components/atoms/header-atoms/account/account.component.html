@@ -4,8 +4,8 @@
         <img class="account-icon" src="assets/images/icone-compte.png" alt="Account">
     </div>
 
-    <!-- Authenticated: show dropdown with logout -->
-    <div *ngIf="isAuthenticated" class="background authenticated" (click)="toggleDropdown($event)">
+    <!-- Authenticated: redirect to dashboard on click, show dropdown on hover -->
+    <div *ngIf="isAuthenticated" class="background authenticated" routerLink="/dashboard" (click)="navigateToDashboard($event)">
         <img class="account-icon" src="assets/images/icone-compte.png" alt="Account">
         <div class="dropdown-menu" [class.show]="isDropdownOpen">
             <div class="dropdown-item" routerLink="/settings">Paramètres</div>

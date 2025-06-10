@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../services/auth.service';
 
@@ -14,7 +14,7 @@ export class AccountComponent {
   // Track dropdown state
   isDropdownOpen = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   // Close dropdown when clicking outside
   @HostListener('document:click', ['$event'])
@@ -55,5 +55,16 @@ export class AccountComponent {
    */
   logout(): void {
     this.authService.logout();
+  }
+
+  /**
+   * Navigate to dashboard page
+   */
+  navigateToDashboard(event: Event): void {
+    // Stop propagation to prevent dropdown toggle
+    event.stopPropagation();
+
+    // Navigate to dashboard
+    this.router.navigate(['/dashboard']);
   }
 }
