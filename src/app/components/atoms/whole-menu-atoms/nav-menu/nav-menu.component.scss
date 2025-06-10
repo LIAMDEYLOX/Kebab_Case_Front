@@ -1,23 +1,26 @@
 .nav-menu-container {
     padding: 5px 5px 5px 5px;
-    border-radius: 10px;
     background-color: #EFE2C5;
     width: 20px; 
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 0; 
     transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
     transform-origin: left center;
     overflow: hidden;
     z-index: 10;
     display: flex;
     flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start; 
+    border-radius: 10px;
 }
 
 .nav-menu-wrapper {
     position: relative;
     width: 1vw; 
-    height: 21vh;
-    transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1); 
+    height: 21vh; 
+    transition: width 0.5s cubic-bezier(0.1, 0.7, 0.5, 1);
+    margin-bottom: 30px;
     
     &::before {
         content: '';
@@ -38,7 +41,7 @@
 
 .nav-menu a {
     font-family: 'Lily Script One', sans-serif;
-    font-size: 1.5rem;  
+    font-size: 1.1rem;  
     font-weight: bold;
     color: #6B3E26;
     text-decoration: none;
@@ -143,9 +146,24 @@ hr {
     transition-delay: 0.1s; 
 }
 
-.nav-menu-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center; 
-    justify-content: flex-start; 
+.nav-link {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        color: #D9A85B;
+    }
+    
+    &:active {
+        color: #6B3E26;
+    }
+}
+
+.home-link {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        color: #D9A85B;
+    }
 }

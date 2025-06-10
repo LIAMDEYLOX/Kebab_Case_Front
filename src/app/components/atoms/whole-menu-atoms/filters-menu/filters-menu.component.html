@@ -2,164 +2,204 @@
     [class.active]="isOpen"
     (mouseenter)="onMouseEnter()" 
     (mouseleave)="onMouseLeave()">
-    <!-- Hitbox étendue invisible -->
     <div class="filters-menu-container">
         <div class="filters-content">
-        <!-- Filtres principaux (toujours visibles) -->
-            <div class="main-filters">
-                <div class="filter-category">Types de plats</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-type-1" class="filter-checkbox">
-                    <label for="filter-type-1">Apéro</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-type-2" class="filter-checkbox">
-                    <label for="filter-type-2">Entrées</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-type-3" class="filter-checkbox">
-                    <label for="filter-type-3">Plats</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-type-4" class="filter-checkbox">
-                    <label for="filter-type-4">Desserts</label>
-                </div>
-                
-                <div class="filter-category">Mangeurs Pointilleux</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-diet-1" class="filter-checkbox">
-                    <label for="filter-diet-1">Végétarien</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-diet-2" class="filter-checkbox">
-                    <label for="filter-diet-2">Végan</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-diet-3" class="filter-checkbox">
-                    <label for="filter-diet-3">Sans gluten</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-diet-4" class="filter-checkbox">
-                    <label for="filter-diet-4">Viandard</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-diet-5" class="filter-checkbox">
-                    <label for="filter-diet-5">Healthy</label>
-                </div>
+            <!-- Première colonne de filtres -->
+            <div class="filters-column">
+                <section class="filter-section">
+                    <h3 class="filter-category">Types de plats</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-type-1" class="filter-checkbox">
+                            <label for="filter-type-1">Apéro</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-type-2" class="filter-checkbox">
+                            <label for="filter-type-2">Entrées</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-type-3" class="filter-checkbox">
+                            <label for="filter-type-3">Plats</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-type-4" class="filter-checkbox">
+                            <label for="filter-type-4">Desserts</label>
+                        </li>
+                    </ul>
+                </section>
 
-                <div class="filter-category">À travers le Monde</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-1" class="filter-checkbox">
-                    <label for="filter-country-1">Italienne</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-2" class="filter-checkbox">
-                    <label for="filter-country-2">Japonaises</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-3" class="filter-checkbox">
-                    <label for="filter-country-3">Indiennes</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-4" class="filter-checkbox">
-                    <label for="filter-country-4">Coréennes</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-5" class="filter-checkbox">
-                    <label for="filter-country-5">Espagnoles</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-6" class="filter-checkbox">
-                    <label for="filter-country-6">Belges (Frites)</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-country-7" class="filter-checkbox">
-                    <label for="filter-country-7">Françaises</label>
-                </div>
+                <section class="filter-section">
+                    <h3 class="filter-category">Mangeurs Pointilleux</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-diet-1" class="filter-checkbox">
+                            <label for="filter-diet-1">Végétarien</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-diet-2" class="filter-checkbox">
+                            <label for="filter-diet-2">Végan</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-diet-3" class="filter-checkbox">
+                            <label for="filter-diet-3">Sans gluten</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-diet-4" class="filter-checkbox">
+                            <label for="filter-diet-4">Viandard</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-diet-5" class="filter-checkbox">
+                            <label for="filter-diet-5">Healthy</label>
+                        </li>
+                    </ul>
+                </section>
 
-                <div class="filter-category">Idées par thématiques</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-theme-1" class="filter-checkbox">
-                    <label for="filter-theme-1">Top recette</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-theme-2" class="filter-checkbox">
-                    <label for="filter-theme-2">Nouvelles recettes</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-theme-3" class="filter-checkbox">
-                    <label for="filter-theme-3">Simplicité express</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-theme-4" class="filter-checkbox">
-                    <label for="filter-theme-4">Rien de se perd</label>
-                </div>
+                <section class="filter-section">
+                    <h3 class="filter-category">À travers le Monde</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-country-1" class="filter-checkbox">
+                            <label for="filter-country-1">Italienne</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-country-2" class="filter-checkbox">
+                            <label for="filter-country-2">Japonaises</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-country-3" class="filter-checkbox">
+                            <label for="filter-country-3">Indiennes</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-country-4" class="filter-checkbox">
+                            <label for="filter-country-4">Coréennes</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-country-5" class="filter-checkbox">
+                            <label for="filter-country-5">Espagnoles</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-country-7" class="filter-checkbox">
+                            <label for="filter-country-7">Françaises</label>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="filter-section">
+                    <h3 class="filter-category">Budget</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-budget-1" class="filter-checkbox">
+                            <label for="filter-budget-1">Économique</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-budget-2" class="filter-checkbox">
+                            <label for="filter-budget-2">Moyen</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-budget-3" class="filter-checkbox">
+                            <label for="filter-budget-3">Élevé</label>
+                        </li>
+                    </ul>
+                </section>
             </div>
 
-            <div class="split"></div>
+            <!-- Deuxième colonne de filtres -->
+            <div class="filters-column">
+                <section class="filter-section">
+                    <h3 class="filter-category">Temps de préparation</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-time-1" class="filter-checkbox">
+                            <label for="filter-time-1">Rapide (&lt; 15 min)</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-time-2" class="filter-checkbox">
+                            <label for="filter-time-2">Moyen (15-30 min)</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-time-3" class="filter-checkbox">
+                            <label for="filter-time-3">Long (&gt; 30 min)</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-time-4" class="filter-checkbox">
+                            <label for="filter-time-4">Vous avez le temps (&gt; 1 h)</label>
+                        </li>
+                    </ul>
+                </section>
 
-            <!-- Filtres supplémentaires (affichés au survol) -->
-            <div class="additional-filters">
-                <div class="filter-category">Budget</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-budget-1" class="filter-checkbox">
-                    <label for="filter-budget-1">Économique</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-budget-2" class="filter-checkbox">
-                    <label for="filter-budget-2">Moyen</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-budget-3" class="filter-checkbox">
-                    <label for="filter-budget-3">Élevé</label>
-                </div>
+                <section class="filter-section">
+                    <h3 class="filter-category">Idées par thématiques</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-theme-1" class="filter-checkbox">
+                            <label for="filter-theme-1">Top recette</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-theme-2" class="filter-checkbox">
+                            <label for="filter-theme-2">Nouvelles recettes</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-theme-3" class="filter-checkbox">
+                            <label for="filter-theme-3">Simplicité express</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-theme-4" class="filter-checkbox">
+                            <label for="filter-theme-4">Rien ne se perd</label>
+                        </li>
+                    </ul>
+                </section>
 
-                <div class="filter-category">Temps de préparation</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-time-1" class="filter-checkbox">
-                    <label for="filter-time-1">Rapide ( 15 min)</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-time-2" class="filter-checkbox">
-                    <label for="filter-time-2">Moyen (15-30 min)</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-time-3" class="filter-checkbox">
-                    <label for="filter-time-3">Long (> 30 min)</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-time-4" class="filter-checkbox">
-                    <label for="filter-time-4">Vous avez le temps (> 1 h)</label>
-                </div>
-                <div class="filter-category">Recettes festives</div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-1" class="filter-checkbox">
-                    <label for="filter-party-1">Noël</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-2" class="filter-checkbox">
-                    <label for="filter-party-2">Halloween</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-3" class="filter-checkbox">
-                    <label for="filter-party-3">Pâques</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-4" class="filter-checkbox">
-                    <label for="filter-party-4">Saint-Valentin</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-5" class="filter-checkbox">
-                    <label for="filter-party-5">Chandeleur</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-6" class="filter-checkbox">
-                    <label for="filter-party-6">Ramadan</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="filter-party-7" class="filter-checkbox">
-                    <label for="filter-party-7">Mardi Gras</label>
-                </div>
+                <section class="filter-section">
+                    <h3 class="filter-category">Recettes festives</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-party-1" class="filter-checkbox">
+                            <label for="filter-party-1">Noël</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-party-2" class="filter-checkbox">
+                            <label for="filter-party-2">Halloween</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-party-3" class="filter-checkbox">
+                            <label for="filter-party-3">Pâques</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-party-4" class="filter-checkbox">
+                            <label for="filter-party-4">Saint-Valentin</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-party-5" class="filter-checkbox">
+                            <label for="filter-party-5">Chandeleur</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-party-6" class="filter-checkbox">
+                            <label for="filter-party-6">Ramadan</label>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="filter-section">
+                    <h3 class="filter-category">De saison</h3>
+                    <ul class="filter-list">
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-season-1" class="filter-checkbox">
+                            <label for="filter-season-1">Eté</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-season-2" class="filter-checkbox">
+                            <label for="filter-season-2">Printemps</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-season-3" class="filter-checkbox">
+                            <label for="filter-season-3">Automne</label>
+                        </li>
+                        <li class="filter-option">
+                            <input type="checkbox" id="filter-season-4" class="filter-checkbox">
+                            <label for="filter-season-4">Hiver</label>
+                        </li>
+                    </ul>
+                </section>
             </div>
         </div>
     </div>

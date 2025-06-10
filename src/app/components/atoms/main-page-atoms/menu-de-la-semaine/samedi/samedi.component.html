@@ -1,0 +1,35 @@
+<div class="jour-container">
+    <div class="jour-header" (click)="toggleExpanded()">
+        <h3>Samedi</h3>
+        <span class="toggle-icon" [class.expanded]="isExpanded">▼</span>
+    </div>
+    
+    <div class="repas-container" [class.show]="isExpanded">
+        <div class="repas">
+            <h4>Petit-déjeuner</h4>
+            <div class="recette-item">
+                <span>Pain grillé aux fruits</span>
+            </div>
+        </div>
+        
+        <div class="repas">
+            <h4>Déjeuner</h4>
+            <div class="recette-item plat">
+                <span>Salade César au poulet</span>
+            </div>
+            <div class="recette-item dessert">
+                <span>Yaourt aux fruits</span>
+            </div>
+        </div>
+        
+        <div class="repas">
+            <h4>Dîner</h4>
+            <div class="recette-item plat">
+                <span>Spaghetti Bolognaise</span>
+            </div>
+            <div class="recette-item dessert">
+                <span>Tiramisu maison</span>
+            </div>
+        </div>
+    </div>
+</div>
