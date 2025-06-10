@@ -4,6 +4,9 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
+import { RegisterComponent } from './components/pages/register/register.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -13,11 +16,14 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: MainPageComponent },
       { path: 'recipe/:id', component: RecipeDetailComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
     ]
   },
   {
     path: 'settings',
     component: SettingsLayoutComponent,
+    canActivate: [() => authGuard()],
     children: [
       { path: '', component: SettingsPageComponent }
     ]

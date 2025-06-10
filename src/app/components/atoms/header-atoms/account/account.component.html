@@ -1,3 +1,15 @@
-<div class = "background">
-    <img class = "account-icon" src = "assets/images/icone-compte.png" alt = "Account">
+<div class="account-container">
+    <!-- Not authenticated: show login link -->
+    <div *ngIf="!isAuthenticated" class="background" routerLink="/login">
+        <img class="account-icon" src="assets/images/icone-compte.png" alt="Account">
+    </div>
+
+    <!-- Authenticated: show dropdown with logout -->
+    <div *ngIf="isAuthenticated" class="background authenticated" (click)="toggleDropdown($event)">
+        <img class="account-icon" src="assets/images/icone-compte.png" alt="Account">
+        <div class="dropdown-menu" [class.show]="isDropdownOpen">
+            <div class="dropdown-item" routerLink="/settings">Paramètres</div>
+            <div class="dropdown-item logout" (click)="logout()">Déconnexion</div>
+        </div>
+    </div>
 </div>
