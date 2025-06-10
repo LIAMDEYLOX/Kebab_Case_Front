@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: typeof window !== 'undefined' ? `http://${window.location.hostname}:8000` : 'http://localhost:8000'
+  apiUrl: typeof window !== 'undefined' ? 'http://192.168.152.114:8000' : 'http://192.168.152.114:8000'
 };
