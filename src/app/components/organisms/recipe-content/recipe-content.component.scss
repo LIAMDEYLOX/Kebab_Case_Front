@@ -33,6 +33,66 @@ hr {
 .recipe-header {
     width: 100%;
     padding: 20px 40px;
+    position: relative;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #D9A85B;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+        background: white;
+        border-color: #FFD700;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    &.active {
+        background: #FFD700;
+        border-color: #FFD700;
+        
+        .star-icon {
+            color: #6B3E26;
+        }
+        
+        &:hover {
+            background: #FFC107;
+            border-color: #FFC107;
+        }
+    }
+    
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+}
+
+.star-icon {
+    font-size: 20px;
+    color: #D9A85B;
+    transition: color 0.3s ease;
+    
+    .favorite-btn:hover & {
+        color: #FFD700;
+    }
+    
+    .favorite-btn.active & {
+        color: #6B3E26;
+    }
 }
 
 .retour {
@@ -65,5 +125,40 @@ hr {
         padding: 5px 10px;
         background-color: #f5f5f5;
         border-radius: 15px;
+    }
+}
+
+.loading-spinner {
+    font-size: 20px;
+    color: #D9A85B;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.login-prompt {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #D9A85B;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 12px;
+    color: #6B3E26;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: white;
+        border-color: #6B3E26;
+        transform: scale(1.05);
     }
 }

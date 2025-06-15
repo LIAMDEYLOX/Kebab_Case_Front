@@ -30,8 +30,6 @@ export class LoginComponent {
     return Array.isArray(value);
   }
 
-  // No longer tracking login attempts as we've removed the automatic retry mechanism
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -52,7 +50,9 @@ export class LoginComponent {
         this.success = true;
         this.token = response;
 
-        // Redirect to home page after successful login
+        // Forcer la vérification du statut d'authentification
+        this.authService.checkAuthStatus();
+
         setTimeout(() => {
           this.router.navigate(['/home']);
         }, 1500);
@@ -62,7 +62,6 @@ export class LoginComponent {
         this.loading = false;
         this.error = err;
 
-        // Set appropriate error message based on error type
         if (err.status === 401) {
           this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
         } else if (err.status === 403) {

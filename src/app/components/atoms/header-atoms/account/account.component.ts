@@ -1,7 +1,8 @@
-import { Component, HostListener, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, HostListener, PLATFORM_ID, Inject, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../../../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-account',
@@ -10,32 +11,11 @@ import { AuthService } from '../../../../services/auth.service';
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })
-export class AccountComponent {
-  // Track dropdown state
+export class AccountComponent implements OnInit, OnDestroy {
   isDropdownOpen = false;
+  isAuthenticated = false;
   private hoverTimeout: any;
-
-  onMouseEnter() {
-    // Annuler le timeout de fermeture s'il existe
-    if (this.hoverTimeout) {
-      clearTimeout(this.hoverTimeout);
-    }
-    this.isDropdownOpen = true;
-  }
-
-  onMouseLeave() {
-    // Délai avant fermeture pour laisser le temps de cliquer
-    this.hoverTimeout = setTimeout(() => {
-      this.isDropdownOpen = false;
-    }, 1000); // 1 seconde de délai
-  }
-
-  onDropdownClick() {
-    // Garder le menu ouvert quand on clique dessus
-    if (this.hoverTimeout) {
-      clearTimeout(this.hoverTimeout);
-    }
-  }
+  private authSubscription?: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -43,15 +23,51 @@ export class AccountComponent {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  // Close dropdown when clicking outside
+  ngOnInit() {
+    // Vérifier l'état initial
+    this.isAuthenticated = this.authService.isAuthenticated;
+    console.log('Account component init - isAuthenticated:', this.isAuthenticated);
+    
+    // S'abonner aux changements d'état d'authentification
+    this.authSubscription = this.authService.authStatus$.subscribe(status => {
+      console.log('Auth status changed:', status);
+      this.isAuthenticated = status;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
+  }
+
+  onMouseEnter() {
+    if (this.hoverTimeout) {
+      clearTimeout(this.hoverTimeout);
+    }
+    if (this.isAuthenticated) {
+      this.isDropdownOpen = true;
+    }
+  }
+
+  onMouseLeave() {
+    this.hoverTimeout = setTimeout(() => {
+      this.isDropdownOpen = false;
+    }, 650); 
+  }
+
+  onDropdownClick() {
+    if (this.hoverTimeout) {
+      clearTimeout(this.hoverTimeout);
+    }
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    // Skip in server-side rendering
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
 
-    // Check if click was outside the account container
     const target = event.target as HTMLElement;
     const accountContainer = document.querySelector('.account-container');
 
@@ -60,43 +76,24 @@ export class AccountComponent {
     }
   }
 
-  /**
-   * Check if user is authenticated
-   */
-  get isAuthenticated(): boolean {
-    return this.authService.isAuthenticated;
-  }
-
-  /**
-   * Toggle dropdown menu
-   */
   toggleDropdown(event: Event): void {
     event.stopPropagation();
-    this.isDropdownOpen = !this.isDropdownOpen;
+    if (this.isAuthenticated) {
+      this.isDropdownOpen = !this.isDropdownOpen;
+    }
   }
 
-  /**
-   * Close dropdown when clicking outside
-   */
   closeDropdown(): void {
     this.isDropdownOpen = false;
   }
 
-  /**
-   * Logout user
-   */
   logout(): void {
     this.authService.logout();
+    this.closeDropdown();
   }
 
-  /**
-   * Navigate to dashboard page
-   */
   navigateToDashboard(event: Event): void {
-    // Stop propagation to prevent dropdown toggle
     event.stopPropagation();
-
-    // Navigate to dashboard
     this.router.navigate(['/dashboard']);
   }
 }

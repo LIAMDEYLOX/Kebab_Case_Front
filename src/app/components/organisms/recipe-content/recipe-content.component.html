@@ -1,6 +1,23 @@
 <div class="recipe-content-container" *ngIf="!loading && !error && recipe">
     <div class="recipe-header"> 
         <div class="retour" (click)="navigateToHome()">Retour</div>
+
+        <button *ngIf="isAuthenticated" 
+                class="favorite-btn" 
+                [class.active]="isFavorite"
+                [disabled]="favoriteLoading"
+                (click)="toggleFavorite()"
+                title="{{ isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris' }}">
+            <span class="star-icon" *ngIf="!favoriteLoading">{{ isFavorite ? '★' : '☆' }}</span>
+            <span class="loading-spinner" *ngIf="favoriteLoading">⟳</span>
+        </button>
+
+        <div *ngIf="!isAuthenticated" 
+            class="login-prompt"
+            (click)="navigateToLogin()">
+            Se connecter pour ajouter aux favoris
+        </div>
+
         <h1 class="recipe-title">{{recipe.nameRecipe}}</h1>
         <span class="rating">⭐ {{recipe.averageRating}}/5</span>
     </div>
