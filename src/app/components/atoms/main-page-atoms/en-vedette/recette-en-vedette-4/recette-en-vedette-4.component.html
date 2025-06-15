@@ -1,9 +1,10 @@
-<div class="container">
-    <img class="recette-image" src="assets/images/recette-3.jpg" alt="Recette 4">
+<div class="container" routerLink="/recipe/3">
+    <img class="recette-image" src="assets/images/recipe-3.png" alt="Recette 3">
     <div class="info-overlay">
-        <h3>Dessert Gourmand</h3>
-        <p>Temps de préparation: 25 min</p>
-        <p>Difficulté: Facile</p>
-        <p>Une douceur irrésistible pour terminer vos repas en beauté...</p>
+        <h3>{{recipe?.nameRecipe || 'Chargement...'}}</h3>
+        <p>⭐ {{recipe?.averageRating || 0}}/5</p>
+        <p>🕐 Préparation: {{recipe?.preparationTimeRecipe || 0}} min</p>
+        <p>🔥 Cuisson: {{recipe?.cookingTimeRecipe || 0}} min</p>
+        <p>{{recipe?.descriptionRecipe || 'Description en cours de chargement...'}}</p>
     </div>
 </div>

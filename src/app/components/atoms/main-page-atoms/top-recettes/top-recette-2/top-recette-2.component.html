@@ -1,9 +1,10 @@
-<div class="container">
-    <img class="recette-image" src="assets/images/recette-2.jpg" alt="Recette 2">
+<div class="container" routerLink="/recipe/1">
+    <img class="recette-image" src="assets/images/recipe-1.png" alt="Recette 1">
     <div class="info-overlay">
-        <h3>Nom de la recette (plus note en face)</h3>
-        <p>Temps de préparation: 30 min</p>
-        <p>Difficulté: Facile</p>
-        <p>Description courte de la recette qui apparaîtra au survol...</p>
+        <h3>{{recipe?.nameRecipe || 'Chargement...'}}</h3>
+        <p>⭐ {{recipe?.averageRating || 0}}/5</p>
+        <p>🕐 Préparation: {{recipe?.preparationTimeRecipe || 0}} min</p>
+        <p>🔥 Cuisson: {{recipe?.cookingTimeRecipe || 0}} min</p>
+        <p>{{recipe?.descriptionRecipe || 'Description en cours de chargement...'}}</p>
     </div>
 </div>

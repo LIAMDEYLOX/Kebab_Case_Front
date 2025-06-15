@@ -47,7 +47,7 @@
 
 .ingredients-organizer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     background-color: #EFE2C5;
@@ -61,6 +61,44 @@
     margin-top: 70px;
 }
 
+.ingredient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.ingredient-name {
+    font-family: inter, sans-serif;
+    font-size: 1rem;
+    color: #333;
+}
+
+.ingredient-quantity {
+    font-family: inter, sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #6B3E26;
+    background-color: rgba(107, 62, 38, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+h3 {
+    font-family: inter, sans-serif;
+    font-size: 1.5rem;
+    color: #6B3E26;
+    margin: 0 0 15px 0;
+}
 
 .split-ingredient {
     position: relative;

@@ -1,10 +1,25 @@
-<div class="recipe-content-container">
+<div class="recipe-content-container" *ngIf="!loading && !error && recipe">
     <div class="recipe-header"> 
         <div class="retour" (click)="navigateToHome()">Retour</div>
-        <h1 class="recipe-title">Kebab Façon Thomas le Train</h1>
+        <h1 class="recipe-title">{{recipe.nameRecipe}}</h1>
+        <span class="rating">⭐ {{recipe.averageRating}}/5</span>
     </div>
     <hr>
-    <app-recipe-head></app-recipe-head>
-    <app-recipe-prez></app-recipe-prez>
-    <app-recipe-steps></app-recipe-steps>
+    <app-recipe-head [recipe]="recipe"></app-recipe-head>
+    <div class="recipe-timing">
+            <span class="prep-time">🕐 Préparation: {{recipe.preparationTimeRecipe}} min</span>
+            <span class="cook-time">🔥 Cuisson: {{recipe.cookingTimeRecipe}} min</span>
+            <span class="portions">👥 Pour {{recipe.portionsRecipe}} personnes</span>
+    </div>
+    <app-recipe-prez [recipe]="recipe"></app-recipe-prez>
+    <app-recipe-steps [recipe]="recipe"></app-recipe-steps>
+</div>
+
+<div *ngIf="loading" class="loading">
+    <p>Chargement de la recette...</p>
+</div>
+
+<div *ngIf="error" class="error">
+    <p>Recette non trouvée</p>
+    <button (click)="navigateToHome()">Retour à l'accueil</button>
 </div>

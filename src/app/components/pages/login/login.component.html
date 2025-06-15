@@ -1,16 +1,14 @@
+<!-- Formulaire de connexion -->
 <div class="login-container">
   <div class="login-form-wrapper">
     <h1>Connexion</h1>
 
-    <!-- Success message -->
     <div *ngIf="success" class="success-message">
       <h3>Connexion réussie!</h3>
       <p>Vous allez être redirigé vers la page d'accueil...</p>
     </div>
 
-    <!-- Login form -->
     <form *ngIf="!success" (ngSubmit)="onSubmit()" #loginForm="ngForm">
-      <!-- API error messages -->
       <div *ngIf="error" class="api-error-message">
         <div *ngIf="error.detail && isArray(error.detail)">
           <div *ngFor="let err of error.detail">

@@ -1,35 +1,22 @@
 <div class="jour-container">
-    <div class="jour-header" (click)="toggleExpanded()">
+    <div class="jour-header">
         <h3>Mercredi</h3>
-        <span class="toggle-icon" [class.expanded]="isExpanded">▼</span>
     </div>
     
-    <div class="repas-container" [class.show]="isExpanded">
-        <div class="repas">
-            <h4>Petit-déjeuner</h4>
-            <div class="recette-item">
-                <span>Smoothie bowl aux fruits</span>
-            </div>
+    <div class="repas-liste">
+        <div class="repas-item">
+            <span class="repas-type">Petit-déjeuner :</span>
+            <span class="repas-nom">Kebab santé</span>
         </div>
         
-        <div class="repas">
-            <h4>Déjeuner</h4>
-            <div class="recette-item plat">
-                <span>Wrap au saumon</span>
-            </div>
-            <div class="recette-item dessert">
-                <span>Salade de fruits</span>
-            </div>
+        <div class="repas-item">
+            <span class="repas-type">Déjeuner :</span>
+            <span class="repas-nom">Kebab complet</span>
         </div>
         
-        <div class="repas">
-            <h4>Dîner</h4>
-            <div class="recette-item plat">
-                <span>Risotto aux champignons</span>
-            </div>
-            <div class="recette-item dessert">
-                <span>Crème brûlée</span>
-            </div>
+        <div class="repas-item">
+            <span class="repas-type">Dîner :</span>
+            <span class="repas-nom">Kebab gourmand</span>
         </div>
     </div>
 </div>

@@ -41,5 +41,5 @@ export const routes: Routes = [
       { path: '', component: SettingsPageComponent }
     ]
   },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: '' }
 ];

@@ -205,13 +205,13 @@ button {
   overflow: hidden;
 
   &:hover {
-    background-color: darken(#D9A85B, 8%);
+    background-color: #c89548;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
   }
 
   &:active {
-    background-color: darken(#D9A85B, 12%);
+    background-color: #b6853f;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     transform: translateY(1px);
   }
@@ -229,13 +229,13 @@ button {
   margin-top: 10px;
 
   &:hover {
-    background-color: darken(#6c757d, 8%);
+    background-color: #5a6268;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
   }
 
   &:active {
-    background-color: darken(#6c757d, 12%);
+    background-color: #545b62;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     transform: translateY(1px);
   }

@@ -1,91 +1,55 @@
 .jour-container {
-    background-color: #EFE2C5;
+    background: #F8F6F3;
     border-radius: 10px;
-    border: 2px solid #7a5d4d;
-    margin: 10px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    width: 10vw;
-    
-    &:hover {
-        box-shadow: 0 4px 12px rgba(107, 62, 38, 0.3);
-    }
+    padding: 12px;
+    margin: 5px;
+    box-shadow: 0 2px 8px rgba(107, 62, 38, 0.1);
+    width: 100%;
+    height: 280px; // Increased height
+    display: flex;
+    flex-direction: column;
 }
 
 .jour-header {
-    background-color: #D9A85B;
-    padding: 15px 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    
-    &:hover {
-        background-color: #c19347;
-    }
+    text-align: center;
+    margin-bottom: 12px;
     
     h3 {
+        background: #6B3E26;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
         margin: 0;
-        color: #6B3E26;
-        font-size: 1.3rem;
+        font-size: 1rem;
         font-weight: bold;
     }
 }
 
-.toggle-icon {
-    color: #6B3E26;
-    font-size: 1rem;
-    transition: transform 0.3s ease;
-    
-    &.expanded {
-        transform: rotate(180deg);
-    }
+.repas-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
 }
 
-.repas-container {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    
-    &.show {
-        max-height: 500px;
-    }
-}
-
-.repas {
-    padding: 15px 20px;
-    border-bottom: 1px solid #D9A85B;
-    
-    &:last-child {
-        border-bottom: none;
-    }
-    
-    h4 {
-        margin: 0 0 10px 0;
-        color: #6B3E26;
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-}
-
-.recette-item {
-    background-color: #f8f4e8;
-    padding: 8px 12px;
-    margin: 5px 0;
+.repas-item {
+    background: white;
     border-radius: 6px;
-    border-left: 4px solid #6B3E26;
+    padding: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     
-    &.plat {
-        border-left-color: #D9A85B;
+    .repas-type {
+        display: block;
+        font-weight: bold;
+        color: #D9A85B;
+        font-size: 0.75rem;
+        margin-bottom: 3px;
     }
     
-    &.dessert {
-        border-left-color: #8B5A3C;
-    }
-    
-    span {
-        color: #553c2e;
-        font-size: 0.95rem;
+    .repas-nom {
+        display: block;
+        color: #6B3E26;
+        font-size: 0.85rem;
+        line-height: 1.2;
     }
 }

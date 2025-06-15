@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RecipeService, Recipe } from '../../../../../services/recipe.service';
 
 @Component({
   selector: 'app-recette-du-jour-1',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './recette-du-jour-1.component.html',
   styleUrl: './recette-du-jour-1.component.scss'
 })
-export class RecetteDuJour1Component {
+export class RecetteDuJour1Component implements OnInit {
+  recipe: Recipe | null = null;
 
-constructor(private router: Router) {}
-  
-  navigateToRecipe(): void {
-    this.router.navigate(['/recipe', '1']);
+  constructor(private recipeService: RecipeService) {}
+
+  ngOnInit(): void {
+    this.recipeService.getRecipeById(1).subscribe(recipe => {
+      this.recipe = recipe;
+    });
   }
-
 }
