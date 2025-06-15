@@ -10,6 +10,7 @@
   align-items: center;
   box-shadow: 0 2px 10px rgba(24, 18, 14, 0.482);
   padding: 5px 0; /* Réduit le padding vertical */
+  overflow: visible;
 
 header {
   position: relative;
@@ -19,6 +20,7 @@ header {
   width: 98%;
   margin: 0; /* Supprime toute marge */
   padding: 0; /* Supprime tout padding */
+  overflow: visible;
 }
 
 .nom-site {

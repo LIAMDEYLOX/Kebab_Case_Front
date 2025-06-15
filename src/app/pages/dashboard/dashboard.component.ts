@@ -1,8 +1,8 @@
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { UserService } from '../../../services/user.service';
-import { AuthService } from '../../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -13,6 +13,29 @@ import { AuthService } from '../../../../services/auth.service';
 export class AccountComponent {
   // Track dropdown state
   isDropdownOpen = false;
+  private hoverTimeout: any;
+
+  onMouseEnter() {
+    // Annuler le timeout de fermeture s'il existe
+    if (this.hoverTimeout) {
+      clearTimeout(this.hoverTimeout);
+    }
+    this.isDropdownOpen = true;
+  }
+
+  onMouseLeave() {
+    // Délai avant fermeture pour laisser le temps de cliquer
+    this.hoverTimeout = setTimeout(() => {
+      this.isDropdownOpen = false;
+    }, 1000); // 1 seconde de délai
+  }
+
+  onDropdownClick() {
+    // Garder le menu ouvert quand on clique dessus
+    if (this.hoverTimeout) {
+      clearTimeout(this.hoverTimeout);
+    }
+  }
 
   constructor(
     private authService: AuthService,

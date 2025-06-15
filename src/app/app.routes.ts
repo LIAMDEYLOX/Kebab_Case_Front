@@ -4,10 +4,10 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
-import { RegisterComponent } from './components/pages/register/register.component';
-import { LoginComponent } from './components/pages/login/login.component';
-import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
-import { AdminPanelComponent } from './components/pages/admin-panel/admin-panel.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
 
@@ -31,14 +31,6 @@ export const routes: Routes = [
         component: AdminPanelComponent,
         canActivate: [() => authGuard(), () => adminGuard()]
       },
-    ]
-  },
-  {
-    path: 'settings',
-    component: SettingsLayoutComponent,
-    canActivate: [() => authGuard()],
-    children: [
-      { path: '', component: SettingsPageComponent }
     ]
   },
   { path: '**', redirectTo: '' }
