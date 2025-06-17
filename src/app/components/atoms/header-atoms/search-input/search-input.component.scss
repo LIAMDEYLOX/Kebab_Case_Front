@@ -1,3 +1,8 @@
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
 .input-container {
   position: relative;
   display: flex;
@@ -9,11 +14,12 @@
 }
 
 .input {
-  color : #6B3E26;
+  color: #6B3E26;
   width: 100%;
   height: 100%;
   font-size: inherit;
   padding-left: 85px;
+  padding-right: 40px; // Space for clear button
   box-sizing: border-box;
   border: 2px solid;
   border-radius: 7px;
@@ -24,7 +30,7 @@
   &:focus {
     background-color: rgba(241, 210, 159, 0.8);
     border-radius: 10px;
-    outline: none; 
+    outline: none;
   }
 }
 
@@ -32,4 +38,120 @@
   border-radius: 10px;
   background-color: rgba(241, 210, 159, 0.6);
   cursor: text;
+}
+
+// Clear button
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6B3E26;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  &:hover {
+    color: #D9A85B;
+  }
+}
+
+// Loading indicator
+.loading-indicator {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(217, 168, 91, 0.3);
+  border-radius: 50%;
+  border-top-color: #D9A85B;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Search results
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #D9A85B;
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: block;
+      padding: 12px 15px;
+      color: #6B3E26;
+      text-decoration: none;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: rgba(241, 210, 159, 0.3);
+      }
+    }
+  }
+
+  .recipe-info {
+    h4 {
+      margin: 0 0 5px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .recipe-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: #666;
+    }
+  }
+}
+
+// No results message
+.no-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #D9A85B;
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 15px;
+  text-align: center;
+  color: #666;
 }

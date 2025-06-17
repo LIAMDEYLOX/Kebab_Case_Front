@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
 
@@ -24,6 +25,11 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [() => authGuard()]
+      },
+      {
+        path: 'favorites',
+        component: FavoritesPageComponent,
         canActivate: [() => authGuard()]
       },
       {

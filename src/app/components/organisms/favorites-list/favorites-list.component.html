@@ -1,0 +1,50 @@
+<div class="favorites-container">
+  <h2>Mes recettes favorites</h2>
+
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Chargement de vos recettes favorites...</p>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error" class="error-message">
+    <p>{{ errorMessage }}</p>
+    <button class="retry-button" (click)="retryLoading()">Réessayer</button>
+  </div>
+
+  <!-- No favorites message -->
+  <div *ngIf="!loading && !error && favorites.length === 0" class="no-favorites">
+    <p>Vous n'avez pas encore de recettes favorites.</p>
+    <p>Explorez nos recettes et ajoutez-les à vos favoris pour les retrouver ici !</p>
+    <button class="explore-button" routerLink="/home">Explorer les recettes</button>
+  </div>
+
+  <!-- Favorites list -->
+  <div *ngIf="!loading && !error && favorites.length > 0" class="favorites-list">
+    <div *ngFor="let favorite of favorites" class="favorite-item">
+      <div class="favorite-content">
+        <div class="favorite-info">
+          <h3>{{ favorite.recipe?.nom_recipe }}</h3>
+          <div class="recipe-details">
+            <span *ngIf="favorite.recipe?.preparation_time_recipe">
+              <i class="fas fa-clock"></i> Préparation: {{ favorite.recipe?.preparation_time_recipe }} min
+            </span>
+            <span *ngIf="favorite.recipe?.cooking_time_recipe">
+              <i class="fas fa-fire"></i> Cuisson: {{ favorite.recipe?.cooking_time_recipe }} min
+            </span>
+            <span *ngIf="favorite.recipe?.portions_recipe">
+              <i class="fas fa-users"></i> {{ favorite.recipe?.portions_recipe }} portions
+            </span>
+          </div>
+          <p *ngIf="favorite.recipe?.description_recipe" class="recipe-description">
+            {{ favorite.recipe?.description_recipe | slice:0:150 }}
+          </p>
+          <div class="favorite-actions">
+            <button class="view-button" [routerLink]="['/recipe', favorite.id_recipe]">Voir la recette</button>
+            <button class="remove-button" (click)="removeFavorite(favorite.id_recipe)">Retirer des favoris</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

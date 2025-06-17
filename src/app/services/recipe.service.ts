@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface Recipe {
     idRecipe: number;
@@ -25,11 +27,16 @@ export interface Ingredient {
     id_categorie: number;
 }
 
+export interface SearchResult {
+    recipes: Recipe[];
+    total: number;
+}
+
 @Injectable({
     providedIn: 'root'
 })
 export class RecipeService {
-    private apiUrl = 'http://localhost:8000/recipe';
+    private apiUrl = `${environment.apiUrl}/recipe`;
 
     constructor(private http: HttpClient) {}
 
@@ -48,5 +55,36 @@ export class RecipeService {
             error: (error) => observer.error(error)
         });
         });
+    }
+
+    /**
+     * Search recipes by query string
+     * @param query The search query
+     * @param limit Optional limit for number of results
+     * @returns Observable of SearchResult
+     */
+    searchRecipes(query: string, limit: number = 10): Observable<SearchResult> {
+        // If query is empty, return empty result
+        if (!query.trim()) {
+            return of({ recipes: [], total: 0 });
+        }
+
+        // Set up query parameters
+        let params = new HttpParams()
+            .set('query', query.trim())
+            .set('limit', limit.toString());
+
+        // Make the API call
+        return this.http.get<Recipe[]>(`${this.apiUrl}/search`, { params })
+            .pipe(
+                map(recipes => ({
+                    recipes: recipes,
+                    total: recipes.length
+                })),
+                catchError(error => {
+                    console.error('Error searching recipes:', error);
+                    return of({ recipes: [], total: 0 });
+                })
+            );
     }
 }
