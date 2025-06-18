@@ -1,0 +1,41 @@
+<header class="search-results-header">
+    <div class="header-content">
+        <!-- Page Title only -->
+        <div class="title-section">
+            <h1 class="page-title">Toutes les recettes</h1>
+        </div>
+
+        <!-- Results Info and Controls -->
+        <div class="results-controls-section">
+        <app-results-counter-info
+            [totalResults]="totalResults"
+            [loading]="loading"
+            [hasActiveFilters]="hasActiveFilters">
+        </app-results-counter-info>
+
+        <div class="controls">
+            <!-- Sort Dropdown -->
+            <div class="sort-control">
+                <label for="sort-select">Trier par:</label>
+                <select 
+                    id="sort-select"
+                    [value]="filterState.sortBy"
+                    (change)="onSortChange($any($event.target).value)"
+                    class="sort-select">
+                <option value="name">Nom</option>
+                <option value="rating">Note</option>
+                <option value="time">Temps de préparation</option>
+            </select>
+            </div>
+
+        <!-- Clear All Filters Button -->
+            <button
+                *ngIf="hasActiveFilters"
+                (click)="onClearAllFilters()"
+                class="clear-filters-btn">
+                Effacer tous les filtres
+            </button>
+            </div>
+        </div>
+    </div>
+</header>

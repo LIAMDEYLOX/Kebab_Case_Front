@@ -1,0 +1,47 @@
+.results-counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.results-text {
+  font-size: 1.1rem;
+  color: #6B3E26;
+  font-weight: 500;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 4px;
+  
+  span {
+    width: 6px;
+    height: 6px;
+    background-color: #D9A85B;
+    border-radius: 50%;
+    animation: loading-pulse 1.4s infinite ease-in-out both;
+    
+    &:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+    
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+@keyframes loading-pulse {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loading .results-text {
+  color: #D9A85B;
+}

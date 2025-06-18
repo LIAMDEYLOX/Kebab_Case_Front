@@ -1,0 +1,21 @@
+<div class="active-filters-bar">
+  <span class="filters-label">Filtres actifs :</span>
+  
+  <div class="filters-list">
+    <!-- Search Query Filter -->
+    <app-active-filter-chip
+      *ngIf="searchQuery"
+      [label]="'Recherche: ' + searchQuery"
+      [type]="'search'"
+      (remove)="onRemoveSearchQuery()">
+    </app-active-filter-chip>
+    
+    <!-- Other Active Filters -->
+    <app-active-filter-chip
+      *ngFor="let filter of activeFilters"
+      [label]="filter"
+      [type]="'filter'"
+      (remove)="onRemoveFilter(filter)">
+    </app-active-filter-chip>
+  </div>
+</div>

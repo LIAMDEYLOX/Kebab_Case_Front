@@ -1,0 +1,98 @@
+.search-results-header {
+    background: #EFE2C5;
+    border-bottom: 1px solid #D9A85B;
+    padding: 24px 0;
+    margin-bottom: 32px;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.title-section {
+    text-align: center;
+    margin-bottom: 24px;
+    
+    .page-title {
+            font-size: 2.5rem;
+            color: #6B3E26;
+            margin: 0;
+            font-family: 'Montserrat Subrayada', sans-serif;
+        }
+}
+
+.results-controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sort-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    label {
+        font-weight: 500;
+        color: #6B3E26;
+        }
+    
+    .sort-select {
+        padding: 8px 12px;
+        border: 1px solid #D9A85B;
+        border-radius: 4px;
+        background: white;
+        font-size: 14px;
+        cursor: pointer;
+        color: #6B3E26;
+        
+        &:focus {
+            outline: none;
+            border-color: #6B3E26;
+            }
+        }
+}
+
+.clear-filters-btn {
+    background-color: #D9A85B;
+    color: #6B3E26;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #c69543;
+    }
+}
+
+@media (max-width: 768px) {
+    .title-section {
+        .page-title {
+        font-size: 2rem;
+        }
+    }
+    
+    .results-controls-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .controls {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

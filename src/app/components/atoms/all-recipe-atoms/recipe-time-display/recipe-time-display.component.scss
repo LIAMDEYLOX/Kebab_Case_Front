@@ -1,0 +1,55 @@
+.time-display {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.time-breakdown {
+  display: flex;
+  gap: 16px;
+}
+
+.time-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  .time-icon {
+    font-size: 1rem;
+  }
+  
+  .time-value {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .time-label {
+    font-size: 0.8rem;
+    color: #999;
+  }
+}
+
+.time-compact {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  .time-icon {
+    font-size: 1rem;
+  }
+  
+  .time-value {
+    font-weight: 500;
+    color: #333;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-breakdown {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .time-item {
+    font-size: 0.8rem;
+  }
+}

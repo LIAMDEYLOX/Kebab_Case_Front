@@ -1,0 +1,38 @@
+<section class="empty-state-section">
+  <div class="empty-state-content">
+    <!-- No Results with Filters -->
+    <div *ngIf="hasActiveFilters" class="no-results-with-filters">
+      <div class="icon">🔍</div>
+      <h2>Aucun résultat trouvé</h2>
+      <p *ngIf="searchQuery">
+        Aucune recette ne correspond à votre recherche "<strong>{{ searchQuery }}</strong>".
+      </p>
+      <p *ngIf="!searchQuery">
+        Aucune recette ne correspond aux filtres sélectionnés.
+      </p>
+      <div class="suggestions">
+        <h3>Suggestions :</h3>
+        <ul>
+          <li>Vérifiez l'orthographe de votre recherche</li>
+          <li>Essayez des mots-clés plus généraux</li>
+          <li>Supprimez certains filtres</li>
+        </ul>
+      </div>
+      <button (click)="onClearFilters()" class="clear-filters-btn">
+        Effacer tous les filtres
+      </button>
+    </div>
+
+    <!-- No Recipes at All -->
+    <div *ngIf="!hasActiveFilters" class="no-recipes">
+      <div class="icon">👨‍🍳</div>
+      <h2>Aucune recette disponible</h2>
+      <p>Il n'y a actuellement aucune recette dans notre base de données.</p>
+      <div class="actions">
+        <button routerLink="/home" class="home-btn">
+          Retour à l'accueil
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

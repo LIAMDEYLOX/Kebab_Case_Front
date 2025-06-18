@@ -1,0 +1,17 @@
+<section class="recipes-grid-section">
+  <!-- Active Filters Bar -->
+  <app-active-filters-bar
+    *ngIf="filterState.activeFilters.length > 0 || filterState.searchQuery"
+    [activeFilters]="filterState.activeFilters"
+    [searchQuery]="filterState.searchQuery"
+    (removeFilter)="onRemoveFilter($event)">
+  </app-active-filters-bar>
+
+  <!-- Recipes Grid -->
+  <div class="recipes-grid">
+    <app-recipe-card
+      *ngFor="let recipe of recipes; trackBy: trackByRecipeId"
+      [recipe]="recipe">
+    </app-recipe-card>
+  </div>
+</section>

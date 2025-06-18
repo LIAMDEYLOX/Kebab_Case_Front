@@ -1,0 +1,25 @@
+<div class="search-input-container">
+  <div class="input-wrapper">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      [placeholder]="placeholder"
+      (keypress)="onKeyPress($event)"
+      class="search-input">
+    
+    <button
+      *ngIf="searchQuery"
+      (click)="onClear()"
+      class="clear-button"
+      title="Effacer la recherche">
+      ✕
+    </button>
+  </div>
+  
+  <button
+    (click)="onSearch()"
+    class="search-button"
+    [disabled]="!searchQuery.trim()">
+    🔍 Rechercher
+  </button>
+</div>

@@ -1,0 +1,62 @@
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.spinner {
+  border: 3px solid #EFE2C5;
+  border-top: 3px solid #6B3E26;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-message {
+  margin: 0;
+  color: #6B3E26;
+  font-weight: 500;
+}
+
+/* Size variations */
+.small {
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+  }
+  
+  .loading-message {
+    font-size: 0.9rem;
+  }
+}
+
+.medium {
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .loading-message {
+    font-size: 1rem;
+  }
+}
+
+.large {
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+  }
+  
+  .loading-message {
+    font-size: 1.2rem;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

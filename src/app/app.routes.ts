@@ -9,6 +9,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
+import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,7 @@ export const routes: Routes = [
         component: AdminPanelComponent,
         canActivate: [() => authGuard(), () => adminGuard()]
       },
+      { path: 'all-recipes', component: AllRecipesComponent },
     ]
   },
   { path: '**', redirectTo: '' }

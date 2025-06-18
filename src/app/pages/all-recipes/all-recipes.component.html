@@ -1,0 +1,44 @@
+<div class="all-recipes-page">
+  <!-- Search Results Header -->
+  <app-search-results-header
+    [totalResults]="filteredRecipes.length"
+    [loading]="loading"
+    [filterState]="filterState"
+    [hasActiveFilters]="hasActiveFilters"
+    (sortChange)="onSortChange($event)"
+    (clearAllFilters)="onClearAllFilters()">
+  </app-search-results-header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <!-- Recipes Grid (when we have results) -->
+    <app-recipes-grid-section
+      *ngIf="!loading && !error && hasResults"
+      [recipes]="filteredRecipes"
+      [filterState]="filterState"
+      (removeFilter)="onRemoveFilter($event)">
+    </app-recipes-grid-section>
+
+    <!-- Empty State (when no results) -->
+    <app-empty-state-section
+      *ngIf="!loading && !error && !hasResults"
+      [hasActiveFilters]="hasActiveFilters"
+      [searchQuery]="filterState.searchQuery"
+      (clearFilters)="onClearAllFilters()">
+    </app-empty-state-section>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-container">
+      <app-loading-state message="Chargement des recettes..."></app-loading-state>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error" class="error-container">
+      <div class="error-message">
+        <h2>Erreur de chargement</h2>
+        <p>Impossible de charger les recettes. Veuillez réessayer.</p>
+        <button (click)="loadAllRecipes()" class="retry-button">Réessayer</button>
+      </div>
+    </div>
+  </main>
+</div>

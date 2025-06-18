@@ -1,0 +1,52 @@
+.all-recipes-page {
+  min-height: 100vh;
+  background-color: #F8F6F3;
+  padding-top: 120px; // Ajouter un padding-top pour éviter le chevauchement avec le header
+}
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.loading-container,
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 40px;
+  background: #EFE2C5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(107, 62, 38, 0.1);
+  
+  h2 {
+    color: #6B3E26;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    color: #6B3E26;
+    margin-bottom: 24px;
+  }
+}
+
+.retry-button {
+  background-color: #6B3E26;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #5a3220;
+  }
+}

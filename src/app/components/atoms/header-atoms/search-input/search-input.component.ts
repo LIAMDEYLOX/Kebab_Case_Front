@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { RecipeService, Recipe, SearchResult } from '../../../../services/recipe.service';
 
@@ -20,7 +20,10 @@ export class SearchInputComponent implements OnInit, OnDestroy {
   private searchSubject = new Subject<string>();
   private subscription = new Subscription();
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // Subscribe to search subject with debounce
@@ -54,6 +57,16 @@ export class SearchInputComponent implements OnInit, OnDestroy {
   // Method called when user types in the search input
   onSearchInput(): void {
     this.searchSubject.next(this.searchQuery);
+    
+    // Si il y a une recherche, naviguer vers all-recipes
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/all-recipes'], { 
+        queryParams: { search: this.searchQuery.trim() } 
+      });
+    } else {
+      // Si la recherche est vide, retourner à home
+      this.router.navigate(['/home']);
+    }
   }
 
   // Method to clear search and hide results
@@ -61,6 +74,8 @@ export class SearchInputComponent implements OnInit, OnDestroy {
     this.searchQuery = '';
     this.showResults = false;
     this.searchResults = [];
+    // Retourner à la home si on efface la recherche
+    this.router.navigate(['/home']);
   }
 
   // Method to hide results when clicking outside

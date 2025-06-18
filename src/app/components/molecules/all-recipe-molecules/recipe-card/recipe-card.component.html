@@ -1,0 +1,33 @@
+<article class="recipe-card" [routerLink]="['/recipe', recipe.idRecipe]">
+  <div class="card-image">
+    <img 
+      [src]="getRecipeImage()" 
+      [alt]="recipe.nameRecipe"
+      (error)="$any($event.target).src='assets/images/default-recipe.png'">
+    <div class="rating-overlay">
+      <app-recipe-rating-stars [rating]="recipe.averageRating"></app-recipe-rating-stars>
+    </div>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="recipe-title">{{ recipe.nameRecipe }}</h3>
+    <p class="recipe-description">{{ recipe.descriptionRecipe }}</p>
+    
+    <div class="recipe-meta">
+      <app-recipe-time-display
+        [preparationTime]="recipe.preparationTimeRecipe"
+        [cookingTime]="recipe.cookingTimeRecipe">
+      </app-recipe-time-display>
+      
+      <div class="portions">
+        <span class="portions-icon">👥</span>
+        <span>{{ recipe.portionsRecipe }} pers.</span>
+      </div>
+    </div>
+    
+    <div class="recipe-author">
+      <span class="author-label">Par</span>
+      <span class="author-name">{{ recipe.userName }}</span>
+    </div>
+  </div>
+</article>

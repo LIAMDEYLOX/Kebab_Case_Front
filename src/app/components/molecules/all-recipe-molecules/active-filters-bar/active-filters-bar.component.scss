@@ -1,0 +1,36 @@
+.active-filters-bar {
+  background: #EFE2C5;
+  border: 1px solid #D9A85B;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filters-label {
+  font-weight: 500;
+  color: #6B3E26;
+  white-space: nowrap;
+}
+
+.filters-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .active-filters-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .filters-list {
+    width: 100%;
+  }
+}

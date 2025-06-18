@@ -1,0 +1,8 @@
+<div class="results-counter" [class.loading]="loading">
+  <span class="results-text">{{ resultsText }}</span>
+  <div *ngIf="loading" class="loading-dots">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>

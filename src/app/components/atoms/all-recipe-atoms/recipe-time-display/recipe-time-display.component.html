@@ -1,0 +1,20 @@
+<div class="time-display" [class.compact]="compact" *ngIf="hasTime">
+  <div *ngIf="!compact" class="time-breakdown">
+    <div *ngIf="preparationTime > 0" class="time-item prep-time">
+      <span class="time-icon">🕐</span>
+      <span class="time-value">{{ preparationTime }} min</span>
+      <span class="time-label">préparation</span>
+    </div>
+    
+    <div *ngIf="cookingTime > 0" class="time-item cook-time">
+      <span class="time-icon">🔥</span>
+      <span class="time-value">{{ cookingTime }} min</span>
+      <span class="time-label">cuisson</span>
+    </div>
+  </div>
+  
+  <div *ngIf="compact" class="time-compact">
+    <span class="time-icon">⏱️</span>
+    <span class="time-value">{{ totalTime }} min</span>
+  </div>
+</div>
