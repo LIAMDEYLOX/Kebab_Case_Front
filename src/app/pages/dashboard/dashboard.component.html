@@ -11,7 +11,9 @@
       <div class="dashboard-card">
         <h3>Mes recettes favorites</h3>
         <p>Accédez à vos recettes préférées et organisez-les.</p>
-        <button class="dashboard-button">Voir mes favoris</button>
+        <button class="dashboard-button" routerLink="/favorites">
+          Voir mes favoris
+        </button>
       </div>
 
       <div class="dashboard-card">
@@ -39,6 +41,7 @@
         <button class="dashboard-button admin-button" routerLink="/admin">Accéder au panneau admin</button>
       </div>
     </div>
+
 
     <!-- Loading indicator -->
     <div *ngIf="loading" class="loading-indicator">

@@ -1,3 +1,46 @@
-<div class="input-container">
-  <input class="input" type="search">
+<div class="search-container">
+  <div class="input-container">
+    <input
+      class="input"
+      type="search"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchInput()"
+      (blur)="hideResults()"
+      placeholder="Rechercher une recette..."
+      autocomplete="off">
+    <button
+      *ngIf="searchQuery"
+      class="clear-button"
+      (click)="clearSearch()"
+      type="button">
+      ✕
+    </button>
+    <div class="loading-indicator" *ngIf="isLoading">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <div class="search-results" *ngIf="showResults && searchResults.length > 0">
+    <ul>
+      <li *ngFor="let recipe of searchResults">
+        <a [routerLink]="['/recipe', recipe.idRecipe]" (click)="clearSearch()">
+          <div class="recipe-info">
+            <h4>{{ recipe.nameRecipe }}</h4>
+            <div class="recipe-details">
+              <span *ngIf="recipe.preparationTimeRecipe">
+                Préparation: {{ recipe.preparationTimeRecipe }} min
+              </span>
+              <span *ngIf="recipe.cookingTimeRecipe">
+                Cuisson: {{ recipe.cookingTimeRecipe }} min
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="no-results" *ngIf="showResults && searchQuery && searchResults.length === 0 && !isLoading">
+    <p>Aucun résultat trouvé pour "{{ searchQuery }}"</p>
+  </div>
 </div>

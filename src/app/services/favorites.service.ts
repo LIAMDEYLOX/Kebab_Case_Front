@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export interface Favorite {
   id_favorites: number;
@@ -13,6 +14,11 @@ export interface Favorite {
     id_recipe: number;
     nom_recipe: string;
     image_recipe: string;
+    preparation_time_recipe?: number;
+    cooking_time_recipe?: number;
+    portions_recipe?: number;
+    description_recipe?: string;
+    average_rating?: number;
   };
 }
 
@@ -24,7 +30,7 @@ export interface FavoriteCreate {
   providedIn: 'root'
 })
 export class FavoritesService {
-  private apiUrl = 'http://localhost:8000/favorites';  // Supprimé le slash final
+  private apiUrl = `${environment.apiUrl}/favorites`;
   private favoritesSubject = new BehaviorSubject<number[]>([]);
   public favorites$ = this.favoritesSubject.asObservable();
 
@@ -38,7 +44,7 @@ export class FavoritesService {
   private getAuthHeaders(): HttpHeaders {
     // Récupérer le token depuis sessionStorage comme dans AuthService
     const tokenStr = sessionStorage.getItem('auth_token');
-    
+
     if (!tokenStr) {
       console.error('No access token found in sessionStorage');
       this.router.navigate(['/login']);
@@ -49,13 +55,13 @@ export class FavoritesService {
       // Parser le token JSON
       const tokenData = JSON.parse(tokenStr);
       const token = tokenData.access_token;
-      
+
       if (!token) {
         console.error('No access_token in stored data');
         this.router.navigate(['/login']);
         throw new Error('No access token');
       }
-      
+
       return new HttpHeaders({
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -80,7 +86,7 @@ export class FavoritesService {
   // Charger tous les favoris de l'utilisateur
   getUserFavorites(): Observable<Favorite[]> {
     try {
-      return this.http.get<Favorite[]>(`${this.apiUrl}/`, {  // Ajout explicite du slash
+      return this.http.get<Favorite[]>(`${this.apiUrl}/`, {
         headers: this.getAuthHeaders()
       }).pipe(
         catchError(this.handleAuthError)
@@ -125,32 +131,20 @@ export class FavoritesService {
 
   // Ajouter une recette aux favoris
   addToFavorites(recipeId: number): Observable<any> {
-    // AJOUTEZ CES LOGS DE DEBUG
-    console.log('DEBUG FRONTEND: recipeId parameter:', recipeId);
-    console.log('DEBUG FRONTEND: Type of recipeId:', typeof recipeId);
-    console.log('DEBUG FRONTEND: Is recipeId null/undefined?', recipeId == null);
-    
     const favoriteData: FavoriteCreate = { id_recipe: recipeId };
-    
-    console.log('DEBUG FRONTEND: favoriteData object:', favoriteData);
-    console.log('DEBUG FRONTEND: JSON.stringify favoriteData:', JSON.stringify(favoriteData));
-    
-    console.log('DEBUG: Sending favorite data:', favoriteData);  // Debug log ajouté
-    
+
     try {
-      return this.http.post<any>(`${this.apiUrl}/`, favoriteData, {  // Ajout explicite du slash
+      return this.http.post<any>(`${this.apiUrl}/`, favoriteData, {
         headers: this.getAuthHeaders()
       }).pipe(
         tap((response) => {
-          console.log('DEBUG: Response from add favorite:', response);  // Debug log ajouté
           const currentFavorites = this.favoritesSubject.value;
           if (!currentFavorites.includes(recipeId)) {
             this.favoritesSubject.next([...currentFavorites, recipeId]);
           }
         }),
         catchError((error) => {
-          console.error('DEBUG: Error in addToFavorites:', error);  // Debug log ajouté
-          console.error('DEBUG: Error details:', error.error);      // Debug log ajouté
+          console.error('Error in addToFavorites:', error);
           return this.handleAuthError(error);
         })
       );
@@ -184,9 +178,6 @@ export class FavoritesService {
 
   // Toggle favori (ajouter ou supprimer)
   toggleFavorite(recipeId: number): Observable<any> {
-    console.log('DEBUG: Toggle favorite for recipe ID:', recipeId);  // Debug log ajouté
-    console.log('DEBUG: Current favorite status:', this.isFavorite(recipeId));  // Debug log ajouté
-    
     if (this.isFavorite(recipeId)) {
       return this.removeFromFavorites(recipeId);
     } else {

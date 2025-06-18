@@ -87,4 +87,5 @@ export class DashboardComponent implements OnInit {
     this.error = false;
     this.checkAdminStatus();
   }
+
 }
