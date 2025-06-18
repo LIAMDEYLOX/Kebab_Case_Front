@@ -6,15 +6,15 @@
         <div class="nav-menu">
             <a (click)="navigateToRecipesOfDay()" class="nav-link">Recettes du jour</a>
             <hr>
+            <a (click)="navigateToTopRecipes()" class="nav-link">Top recettes</a>
+            <hr>
             <a (click)="navigateToTrending()" class="nav-link">À la une</a>
             <hr>
             <a (click)="navigateToWeeklyMenu()" class="nav-link">Menu de la semaine</a>
-            <hr>
-            <a (click)="navigateToAntiWaste()" class="nav-link">Anti-Gaspi</a>
         </div>
         <div class="split-menu"></div>
         <div class="main-page-nav">
-            <a class="home-link">Accueil</a>
+            <a (click)="navigateToHome()" class="home-link">Accueil</a>
         </div>
     </div>
 </div>

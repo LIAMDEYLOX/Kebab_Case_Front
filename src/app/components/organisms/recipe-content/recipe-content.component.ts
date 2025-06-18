@@ -67,7 +67,7 @@ export class RecipeContentComponent implements OnInit, OnDestroy {
     // S'abonner aux favoris
     this.favoritesSubscription = this.favoritesService.favorites$.subscribe(favorites => {
       if (this.recipe) {
-        this.isFavorite = favorites.some((fav: any) => fav.id_recipe === this.recipe.id_recipe);
+          this.isFavorite = favorites.some((fav: any) => fav.id_recipe === this.recipe.idRecipe);  // ✅ Changé
       }
     });
 
@@ -133,20 +133,18 @@ export class RecipeContentComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // AJOUTEZ CES LOGS DE DEBUG
     console.log('DEBUG COMPONENT: this.recipe COMPLET:', this.recipe);
     console.log('DEBUG COMPONENT: Object.keys(this.recipe):', Object.keys(this.recipe || {}));
     console.log('DEBUG COMPONENT: this.recipe.id_recipe:', this.recipe?.id_recipe);
     console.log('DEBUG COMPONENT: this.recipe.idRecipe:', this.recipe?.idRecipe);
     console.log('DEBUG COMPONENT: this.recipe.id:', this.recipe?.id);
     
-    const recipeId = this.recipe?.id_recipe || this.recipe?.idRecipe || this.recipe?.id;
+     const recipeId = this.recipe?.idRecipe;  // ✅ Changé
     console.log('DEBUG COMPONENT: recipeId trouvé:', recipeId);
     
     if (!recipeId) {
-      console.error('ERROR: No recipe ID available!');
-      console.error('DEBUG: Available recipe properties:', Object.keys(this.recipe || {}));
-      return;
+        console.error('ERROR: No recipe ID available!');
+        return;
     }
     
     console.log('DEBUG COMPONENT: Using recipe ID:', recipeId);

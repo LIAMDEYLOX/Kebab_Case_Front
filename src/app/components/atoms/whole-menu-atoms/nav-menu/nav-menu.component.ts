@@ -17,7 +17,8 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
   constructor(
     private menuStateService: MenuStateService, 
-    private scrollService: ScrollService) {}
+    private scrollService: ScrollService,
+    private router: Router) {}
 
   ngOnInit() {
     this.subscription = this.menuStateService.menusOpen$.subscribe((isOpen: boolean) => {
@@ -33,20 +34,43 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     this.menuStateService.closeMenus();
   }
 
+  // Navigation vers l'accueil
+  navigateToHome() {
+    this.router.navigate(['/home']);
+    this.menuStateService.closeMenus();
+  }
+
+  // Navigation avec vérification de la page actuelle
+  private navigateAndScroll(sectionId: string) {
+    // Vérifier si on est déjà sur la page home
+    if (this.router.url === '/home') {
+      // Si on est déjà sur home, juste scroller
+      this.scrollService.scrollToSection(sectionId);
+    } else {
+      // Si on est sur une autre page, naviguer vers home puis scroller
+      this.router.navigate(['/home']).then(() => {
+        setTimeout(() => {
+          this.scrollService.scrollToSection(sectionId);
+        }, 100);
+      });
+    }
+    this.menuStateService.closeMenus();
+  }
+
   navigateToRecipesOfDay() {
-    this.scrollService.scrollToSection('recettes-du-jour');
+    this.navigateAndScroll('recettes-du-jour');
   }
 
   navigateToTrending() {
-    this.scrollService.scrollToSection('en-vedette');
+    this.navigateAndScroll('en-vedette');
+  }
+
+  navigateToTopRecipes() {
+    this.navigateAndScroll('top-recettes');
   }
 
   navigateToWeeklyMenu() {
-    this.scrollService.scrollToSection('menu-semaine');
-  }
-
-  navigateToAntiWaste() {
-    this.scrollService.scrollToSection('anti-gaspi');
+    this.navigateAndScroll('menu-semaine');
   }
   
   ngOnDestroy() {

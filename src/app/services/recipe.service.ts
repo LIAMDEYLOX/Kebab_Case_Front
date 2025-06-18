@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface Recipe {
     idRecipe: number;
@@ -38,15 +39,8 @@ export class RecipeService {
     }
 
     getRecipeById(id: number): Observable<Recipe | null> {
-        return new Observable(observer => {
-        this.getAllRecipes().subscribe({
-            next: (recipes) => {
-            const recipe = recipes.find(r => r.idRecipe === id);
-            observer.next(recipe || null);
-            observer.complete();
-            },
-            error: (error) => observer.error(error)
-        });
-        });
+        return this.http.get<Recipe>(`${this.apiUrl}/${id}`).pipe(
+            catchError(() => of(null))
+        );
     }
 }
