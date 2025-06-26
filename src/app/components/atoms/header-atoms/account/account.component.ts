@@ -96,4 +96,10 @@ export class AccountComponent implements OnInit, OnDestroy {
     event.stopPropagation();
     this.router.navigate(['/dashboard']);
   }
+
+  navigateToCreateRecipe(event: Event): void {
+    event.stopPropagation();
+    this.closeDropdown();
+    this.router.navigate(['/create-recipe']);
+  }
 }

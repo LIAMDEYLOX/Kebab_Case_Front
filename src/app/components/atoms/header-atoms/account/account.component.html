@@ -6,12 +6,13 @@
         <img class="account-icon" src="assets/images/icone-compte.png" alt="Account">
     </div>
 
-    <div *ngIf="isAuthenticated" class="background authenticated" routerLink="/dashboard" (click)="navigateToDashboard($event)">
+    <div *ngIf="isAuthenticated" class="background authenticated" (click)="navigateToDashboard($event)">
         <img class="account-icon" src="assets/images/icone-compte.png" alt="Account">
         <div class="dropdown-menu" 
             [class.show]="isDropdownOpen" 
             (click)="onDropdownClick()">
             <div class="dropdown-item logout" (click)="logout()">Déconnexion</div>
+            <div class="dropdown-item" (click)="navigateToCreateRecipe($event)">Créer une recette</div>
         </div>
     </div>
 </div>

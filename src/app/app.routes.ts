@@ -10,6 +10,7 @@ import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.co
 import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
 import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
+import { CreateRecipeComponent } from './pages/create-recipe/create-recipe.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,7 @@ export const routes: Routes = [
         canActivate: [() => authGuard(), () => adminGuard()]
       },
       { path: 'all-recipes', component: AllRecipesComponent },
+      { path: 'create-recipe', component: CreateRecipeComponent },
     ]
   },
   { path: '**', redirectTo: '' }

@@ -1,0 +1,43 @@
+.steps-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fffbe9;
+  border-radius: 8px;
+  padding: 12px 0;
+}
+
+label {
+  font-weight: 700;
+  color: #C26943;
+  background: #FFE6C7;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  font-size: 1.08rem;
+  box-shadow: 0 1px 4px #d9a85b11;
+  display: inline-block;
+  max-width: 100%;
+}
+
+textarea {
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 2px solid #c26943;
+  background: #fff;
+  color: #6b3e26;
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #d9a85b11;
+  min-height: 120px;
+  resize: vertical;
+}
+
+textarea:focus {
+  border-color: #d9a85b;
+  background: #fffbe9;
+  outline: none;
+  box-shadow: 0 4px 16px #d9a85b22;
+}
