@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuDeLaSemaineComponent } from './menu-de-la-semaine.component';
+import { CommentZoneComponent } from './comment-zone.component';
 
-describe('MenuDeLaSemaineComponent', () => {
-  let component: MenuDeLaSemaineComponent;
-  let fixture: ComponentFixture<MenuDeLaSemaineComponent>;
+describe('CommentZoneComponent', () => {
+  let component: CommentZoneComponent;
+  let fixture: ComponentFixture<CommentZoneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuDeLaSemaineComponent]
+      imports: [CommentZoneComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MenuDeLaSemaineComponent);
+    fixture = TestBed.createComponent(CommentZoneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

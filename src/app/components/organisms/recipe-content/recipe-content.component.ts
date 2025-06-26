@@ -6,19 +6,15 @@ import { FavoritesService } from '../../../services/favorites.service';
 import { AuthService } from '../../../services/auth.service';
 import { Subscription } from 'rxjs';
 
-// Importer tous les composants utilisés dans le template
+
 import { RecipeHeadComponent } from '../../molecules/recipe-content-molecules/recipe-head/recipe-head.component';
 import { RecipeStepsComponent } from '../../atoms/recipe-content-atoms/recipe-steps/recipe-steps.component';
 import { RecipePrezComponent } from '../../atoms/recipe-content-atoms/recipe-prez/recipe-prez.component';
+import { CommentSectionComponent } from '../../molecules/recipe-content-molecules/comment-section/comment-section.component';
 
 @Component({
   selector: 'app-recipe-content',
-  imports: [
-    CommonModule,
-    RecipeHeadComponent,
-    RecipeStepsComponent,
-    RecipePrezComponent
-  ],
+  imports: [CommonModule, RecipeHeadComponent, RecipeStepsComponent, RecipePrezComponent, CommentSectionComponent],
   standalone: true,
   templateUrl: './recipe-content.component.html',
   styleUrl: './recipe-content.component.scss'

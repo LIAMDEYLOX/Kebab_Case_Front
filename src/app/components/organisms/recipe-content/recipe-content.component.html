@@ -30,6 +30,9 @@
     </div>
     <app-recipe-prez [recipe]="recipe"></app-recipe-prez>
     <app-recipe-steps [recipe]="recipe"></app-recipe-steps>
+    
+    <!-- Section commentaires ajoutée -->
+    <app-comment-section [recipeId]="recipe.idRecipe"></app-comment-section>
 </div>
 
 <div *ngIf="loading" class="loading">

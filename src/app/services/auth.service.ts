@@ -237,4 +237,10 @@ export class AuthService implements OnDestroy {
     const isAuth = this.isAuthenticated;
     this.authStatusSubject.next(isAuth);
   }
+
+
+  public getToken(): string | null {
+    const token = this.currentTokenValue;
+    return token ? token.access_token : null;
+  }
 }

@@ -19,6 +19,4 @@ export class RecetteDuJour3Component implements OnInit {
       this.recipe = recipe;
     });
   }
-}{
-
 }

@@ -1,0 +1,20 @@
+<div class="comments-list">
+  <h4 *ngIf="comments.length > 0">
+    Avis des utilisateurs ({{ comments.length }})
+  </h4>
+  
+  <div class="no-comments" *ngIf="comments.length === 0">
+    <p>Aucun avis pour cette recette. Soyez le premier à la noter !</p>
+  </div>
+
+  <div class="comment-item" *ngFor="let comment of comments">
+    <div class="comment-header">
+      <div class="comment-author">{{ comment.author }}</div>
+      <div class="comment-rating">
+        <span *ngFor="let star of getStars(comment.rating)" class="star">{{ star }}</span>
+      </div>
+      <div *ngIf="comment.date" class="comment-date">{{ comment.date | date:'dd/MM/yyyy' }}</div>
+    </div>
+    <div class="comment-content">{{ comment.content }}</div>
+  </div>
+</div>

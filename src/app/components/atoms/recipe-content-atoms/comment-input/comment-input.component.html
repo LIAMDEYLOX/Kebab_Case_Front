@@ -1,0 +1,32 @@
+<div class="comment-form">
+  <h4>Laisser un avis</h4>
+  
+  <div class="rating-input">
+    <label for="rating">Note :</label>
+    <select id="rating" [(ngModel)]="newComment.rating" class="rating-select">
+      <option value="5">★★★★★ (5)</option>
+      <option value="4">★★★★☆ (4)</option>
+      <option value="3">★★★☆☆ (3)</option>
+      <option value="2">★★☆☆☆ (2)</option>
+      <option value="1">★☆☆☆☆ (1)</option>
+    </select>
+  </div>
+  
+  <div class="comment-input">
+    <label for="comment">Votre commentaire :</label>
+    <textarea
+      id="comment"
+      [(ngModel)]="newComment.content"
+      placeholder="Partagez votre expérience avec cette recette..."
+      rows="4"
+      class="comment-textarea">
+    </textarea>
+  </div>
+  
+  <button 
+    (click)="submitComment()" 
+    [disabled]="!newComment.content.trim()"
+    class="submit-btn">
+    Publier mon avis
+  </button>
+</div>

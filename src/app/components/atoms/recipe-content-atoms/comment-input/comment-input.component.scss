@@ -1,0 +1,97 @@
+.comment-form {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: 1px solid #EFE2C5;
+
+  h4 {
+    color: #6B3E26;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+}
+
+.rating-input {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    color: #6B3E26;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .rating-select {
+    padding: 10px;
+    border: 2px solid #D9A85B;
+    border-radius: 6px;
+    background: white;
+    color: #6B3E26;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: #6B3E26;
+    }
+  }
+}
+
+.comment-input {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    color: #6B3E26;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .comment-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #D9A85B;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #6B3E26;
+
+    &:focus {
+      outline: none;
+      border-color: #6B3E26;
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+}
+
+.submit-btn {
+  background-color: #6B3E26;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #5a3220;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 768px) {
+  .comment-form {
+    padding: 20px;
+  }
+}

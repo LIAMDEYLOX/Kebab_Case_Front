@@ -4,6 +4,7 @@ import { TopRecettesComponent } from '../../../molecules/main-page-molecules/top
 
 @Component({
   selector: 'app-first-section',
+  standalone: true,
   imports: [RecettesDuJourComponent, TopRecettesComponent],
   templateUrl: './first-section.component.html',
   styleUrl: './first-section.component.scss'

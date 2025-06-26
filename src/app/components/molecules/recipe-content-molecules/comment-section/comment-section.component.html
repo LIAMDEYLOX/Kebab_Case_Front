@@ -1,0 +1,24 @@
+<div class="comment-section">
+  <h3 class="section-title">Avis et commentaires</h3>
+  
+
+  <app-comment-input 
+    *ngIf="isAuthenticated"
+    (commentSubmitted)="onCommentSubmitted($event)">
+  </app-comment-input>
+
+  <div class="login-prompt" *ngIf="!isAuthenticated">
+    <p>Connectez-vous pour laisser un avis sur cette recette</p>
+    <button (click)="navigateToLogin()" class="login-btn">Se connecter</button>
+  </div>
+
+
+  <div *ngIf="isLoading" class="loading-comments">Chargement des avis...</div>
+  <div *ngIf="error" class="error-comments">{{ error }}</div>
+
+
+  <app-comment-zone 
+    *ngIf="!isLoading && !error"
+    [comments]="comments">
+  </app-comment-zone>
+</div>
