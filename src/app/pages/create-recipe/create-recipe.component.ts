@@ -7,11 +7,13 @@ import { RecipeDescriptionFormComponent } from '../../components/organisms/creat
 // import { RecipePreviewComponent } from '../../components/organisms/create-recipe-organisms/recipe-preview/recipe-preview.component';
 import { FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { CreateRecipeService } from '../../services/create-recipe.sercvice';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-recipe',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     RecipeFormHeadComponent,
     RecipeIngredientsFormComponent,

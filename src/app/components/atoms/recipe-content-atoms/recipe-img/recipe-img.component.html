@@ -1,3 +1,10 @@
-<div class ="recipe-img-container">
-    <img src="assets/images/recipe.png" [alt]="recipe?.nameRecipe || 'Recette'" class="recipe-image">
+<div class="recipe-img-container">
+    <img 
+        [src]="getRecipeImage()" 
+        [alt]="recipe?.nameRecipe || 'Image de la recette'"
+        class="recipe-image"
+        (error)="onImgError($event)">
+    <div *ngIf="isDefaultImage()" class="no-image-text">
+        <span>Aucune image disponible pour cette recette</span>
+    </div>
 </div>
