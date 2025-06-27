@@ -1,11 +1,13 @@
 <!-- ...existing code... -->
-<div class="form-head">
-  <label for="recipeName">Nom de la recette</label>
-  <input id="recipeName" type="text" placeholder="Ex: Kebab maison" />
+<div [formGroup]="form">
+  <div class="form-head">
+    <label for="recipeName">Nom de la recette</label>
+    <input id="recipeName" type="text" placeholder="Ex: Kebab maison" formControlName="name" />
 
-  <label for="recipeImage">Image</label>
-  <div class="image-upload">
-    <input id="recipeImage" type="file" />
-    <span class="image-hint">Formats acceptés : jpg, png, jpeg</span>
+    <label for="recipeImage">Image</label>
+    <div class="image-upload">
+      <input id="recipeImage" type="file" />
+      <span class="image-hint">Formats acceptés : jpg, png, jpeg</span>
+    </div>
   </div>
 </div>

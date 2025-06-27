@@ -1,8 +1,11 @@
 <!-- ...existing code... -->
 <div class="ingredients-form">
   <label>Ingrédients</label>
-  <input type="text" placeholder="Ex: 2 tomates" />
-  <input type="text" placeholder="Ex: 1 oignon" />
-  <input type="text" placeholder="Ex: 200g de poulet" />
-  <button type="button" class="add-ingredient-btn">+ Ajouter un ingrédient</button>
+  <div *ngFor="let ing of ingredientGroups; let i = index" [formGroup]="ing" class="ingredient-row">
+    <input type="text" placeholder="Nom de l'ingrédient" formControlName="name" class="ingredient-name" />
+    <input type="text" placeholder="Quantité" formControlName="quantity" class="ingredient-qty" />
+    <input type="text" placeholder="Unité (ex: g, ml, pièce...)" formControlName="unit" class="ingredient-unit" />
+    <button type="button" class="remove-ingredient-btn" (click)="remove.emit(i)" title="Supprimer cet ingrédient de la liste">🗑️</button>
+  </div>
+  <button type="button" class="add-ingredient-btn" (click)="add.emit()">+ Ajouter un ingrédient</button>
 </div>
