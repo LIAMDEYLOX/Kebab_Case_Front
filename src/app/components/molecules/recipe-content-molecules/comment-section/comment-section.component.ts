@@ -5,7 +5,8 @@ import { CommentInputComponent } from '../../../atoms/recipe-content-atoms/comme
 import { CommentZoneComponent } from '../../../atoms/recipe-content-atoms/comment-zone/comment-zone.component';
 import { AuthService } from '../../../../services/auth.service';
 import { Subscription } from 'rxjs';
-import { CommentService, Comment } from '../../../../services/comment.service';
+import { CommentService, Comment } from '../../../../services/ratingservice';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-comment-section',
@@ -23,20 +24,32 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   comments: Comment[] = [];
   private authSubscription?: Subscription;
-
-  // Propriétés manquantes à ajouter
   isLoading = true;
   error: string | null = null;
+
+  currentUser: { id: number; pseudouser: string } | null = null;
+  private currentUserSubscription?: Subscription;
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private commentService: CommentService // Assurez-vous que ce service est injecté
+    private commentService: CommentService
   ) {}
 
   ngOnInit(): void {
     this.authSubscription = this.authService.authStatus$.subscribe(status => {
       this.isAuthenticated = status;
+      if (status) {
+        // Récupère l'utilisateur connecté via /users/me
+        if (this.currentUserSubscription) {
+          this.currentUserSubscription.unsubscribe();
+        }
+        this.currentUserSubscription = this.authService.getCurrentUser().subscribe(user => {
+          this.currentUser = user;
+        });
+      } else {
+        this.currentUser = null;
+      }
     });
 
     if (this.recipeId) {
@@ -65,6 +78,9 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
     }
+    if (this.currentUserSubscription) {
+      this.currentUserSubscription.unsubscribe();
+    }
   }
 
   navigateToLogin(): void {
@@ -75,14 +91,38 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   onCommentSubmitted(commentData: { content: string; rating: number }): void {
     if (!this.recipeId) return;
 
-    this.commentService.addComment(this.recipeId, commentData).subscribe({
-      next: (newComment) => {
-        this.comments.unshift(newComment);
-      },
-      error: (err) => {
-        console.error('Failed to submit comment', err);
-        alert(err.message || 'Erreur lors de la publication de votre avis.');
-      }
-    });
+    // DEBUG
+    console.log('currentUser', this.currentUser);
+    console.log('comments', this.comments);
+
+    const existing = this.currentUser
+      ? this.comments.find(c => c.user_id === this.currentUser!.id)
+      : null;
+
+    if (existing) {
+      // Remplacer le commentaire existant (PUT)
+      this.commentService.updateComment(this.recipeId, commentData).subscribe({
+        next: (updatedComment) => {
+          this.comments = this.comments.map(c =>
+            c.user_id === updatedComment.user_id ? updatedComment : c
+          );
+        },
+        error: (err) => {
+          console.error('Failed to update comment', err);
+          alert(err.message || 'Erreur lors de la modification de votre avis.');
+        }
+      });
+    } else {
+      // Ajouter un nouveau commentaire (POST)
+      this.commentService.addComment(this.recipeId, commentData).subscribe({
+        next: (newComment) => {
+          this.comments.unshift(newComment);
+        },
+        error: (err) => {
+          console.error('Failed to submit comment', err);
+          alert(err.message || 'Erreur lors de la publication de votre avis.');
+        }
+      });
+    }
   }
 }

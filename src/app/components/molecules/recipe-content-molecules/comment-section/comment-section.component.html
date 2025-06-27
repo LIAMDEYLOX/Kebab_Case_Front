@@ -19,6 +19,7 @@
 
   <app-comment-zone 
     *ngIf="!isLoading && !error"
-    [comments]="comments">
+    [comments]="comments"
+    [currentUser]="currentUser">
   </app-comment-zone>
 </div>

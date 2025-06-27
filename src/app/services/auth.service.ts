@@ -1,8 +1,10 @@
 import { Injectable, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, timer, of } from 'rxjs';
 import { UserService } from './user.service';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 interface AuthToken {
   access_token: string;
@@ -29,6 +31,7 @@ export class AuthService implements OnDestroy {
   constructor(
     private router: Router,
     private userService: UserService,
+    private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     const storedToken = this.getStoredToken();
@@ -242,5 +245,19 @@ export class AuthService implements OnDestroy {
   public getToken(): string | null {
     const token = this.currentTokenValue;
     return token ? token.access_token : null;
+  }
+
+  getCurrentUser(): Observable<{ id: number; pseudouser: string } | null> {
+    const token = this.getToken();
+    if (!token) {
+      return of(null);
+    }
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<any>('http://localhost:8000/users/me', { headers }).pipe(
+      map(user => ({
+        id: user.iduser,
+        pseudouser: user.pseudouser
+      }))
+    );
   }
 }

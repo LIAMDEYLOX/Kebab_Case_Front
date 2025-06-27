@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// 1. Importer l'interface partagée depuis le service
-import { Comment } from '../../../../services/comment.service';
+import { Comment } from '../../../../services/ratingservice';
 
 @Component({
   selector: 'app-comment-zone',
@@ -12,9 +11,12 @@ import { Comment } from '../../../../services/comment.service';
 })
 export class CommentZoneComponent {
   @Input() comments: Comment[] = []; // <-- Maintenant, ceci utilise la bonne interface
+  @Input() currentUser: { id: number; pseudouser: string } | null = null;
 
   getStars(rating: number): string[] {
-    // Amélioration : on arrondit la note pour afficher le bon nombre d'étoiles pleines
-    return Array(5).fill('').map((_, i) => i < Math.round(rating) ? '★' : '☆');
+    // Affiche le bon nombre d'étoiles pleines selon la note (arrondi à l'entier inférieur)
+    const fullStars = Math.floor(rating);
+    const stars = Array(fullStars).fill('★').concat(Array(5 - fullStars).fill('☆'));
+    return stars;
   }
 }
