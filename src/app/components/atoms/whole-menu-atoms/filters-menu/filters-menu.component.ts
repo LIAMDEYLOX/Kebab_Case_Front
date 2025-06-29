@@ -34,43 +34,34 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
   }
 
   onFilterChange(filterType: string, filterValue: string, isChecked: boolean): void {
-    // Construire les paramètres de query pour les filtres
+    // On ne stocke que la valeur du filtre (ex: "Végétarien")
     const currentParams = new URLSearchParams(window.location.search);
-    
+
+    let existingFilters = currentParams.get('filters') ? currentParams.get('filters')!.split(',') : [];
+
     if (isChecked) {
-      // Ajouter le filtre
-      const existingFilters = currentParams.get('filters') ? currentParams.get('filters')!.split(',') : [];
-      const newFilter = `${filterType}:${filterValue}`;
-      if (!existingFilters.includes(newFilter)) {
-        existingFilters.push(newFilter);
+      if (!existingFilters.includes(filterValue)) {
+        existingFilters.push(filterValue);
       }
-      currentParams.set('filters', existingFilters.join(','));
     } else {
-      // Retirer le filtre
-      const existingFilters = currentParams.get('filters') ? currentParams.get('filters')!.split(',') : [];
-      const filterToRemove = `${filterType}:${filterValue}`;
-      const updatedFilters = existingFilters.filter(f => f !== filterToRemove);
-      
-      if (updatedFilters.length > 0) {
-        currentParams.set('filters', updatedFilters.join(','));
-      } else {
-        currentParams.delete('filters');
-      }
+      existingFilters = existingFilters.filter(f => f !== filterValue);
     }
 
-    // Navigation
+    if (existingFilters.length > 0) {
+      currentParams.set('filters', existingFilters.join(','));
+    } else {
+      currentParams.delete('filters');
+    }
+
     const hasActiveFilters = currentParams.has('filters') || currentParams.has('search');
-    
     if (hasActiveFilters) {
-      // Aller vers la page all-recipes avec les filtres
-      this.router.navigate(['/all-recipes'], { 
-        queryParams: Object.fromEntries(currentParams.entries()) 
+      this.router.navigate(['/all-recipes'], {
+        queryParams: Object.fromEntries(currentParams.entries())
       });
     } else {
-      // Retourner à la page principale
       this.router.navigate(['/home']);
     }
-    
+
     this.menuStateService.closeMenus();
   }
 

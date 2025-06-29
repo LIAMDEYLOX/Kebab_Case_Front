@@ -1,0 +1,48 @@
+.favorite-btn {
+    background: #fff;
+    border: 2px solid #D9A85B;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+    .star-icon {
+        font-size: 22px;
+        color: #D9A85B;
+        transition: color 0.2s;
+    }
+}
+
+/* Style quand la recette est en favoris */
+.favorite-btn.active {
+    background: #FFD700 !important;
+    border-color: #FFD700 !important;
+}
+.favorite-btn.active .star-icon {
+    color: #6B3E26 !important;
+}
+
+/* Encapsulation Angular : force le style même avec ngClass */
+:host ::ng-deep .favorite-btn.active {
+    background: #FFD700 !important;
+    border-color: #FFD700 !important;
+}
+:host ::ng-deep .favorite-btn.active .star-icon {
+    color: #6B3E26 !important;
+}
+
+.loading-spinner {
+    font-size: 20px;
+    color: #D9A85B;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}

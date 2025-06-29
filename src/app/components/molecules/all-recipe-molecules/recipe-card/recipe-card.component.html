@@ -14,14 +14,20 @@
     <p class="recipe-description">{{ recipe.descriptionRecipe }}</p>
     
     <div class="recipe-meta">
-      <app-recipe-time-display
-        [preparationTime]="recipe.preparationTimeRecipe"
-        [cookingTime]="recipe.cookingTimeRecipe">
-      </app-recipe-time-display>
-      
-      <div class="portions">
-        <span class="portions-icon">👥</span>
-        <span>{{ recipe.portionsRecipe }} pers.</span>
+      <div class="meta-item">
+        <span class="meta-icon">🕐</span>
+        <span class="meta-label">Préparation</span>
+        <span class="meta-value">{{ recipe.preparationTimeRecipe }} min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-icon">🔥</span>
+        <span class="meta-label">Cuisson</span>
+        <span class="meta-value">{{ recipe.cookingTimeRecipe }} min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-icon">👥</span>
+        <span class="meta-label">Portions</span>
+        <span class="meta-value">{{ recipe.portionsRecipe }} pers.</span>
       </div>
     </div>
     

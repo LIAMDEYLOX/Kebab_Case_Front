@@ -14,6 +14,7 @@ export interface Recipe {
     userName: string;
     averageRating: number;
     ingredients: RecipeIngredient[];
+    tags: string[]; // ex: ['vegetarian', 'gluten-free', 'italian']
 }
 
 export interface RecipeIngredient {

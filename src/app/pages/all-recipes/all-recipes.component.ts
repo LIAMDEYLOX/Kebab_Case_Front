@@ -78,13 +78,16 @@ export class AllRecipesComponent implements OnInit, OnDestroy {
       if (params['search']) {
         this.filterState.searchQuery = params['search'];
       }
-      
       if (params['filters']) {
         // Parser les filtres depuis l'URL
         const filtersString = params['filters'];
-        this.filterState.activeFilters = filtersString.split(',');
+        // On ne garde que la valeur du filtre (après le ':', ou tout si pas de ':')
+        this.filterState.activeFilters = filtersString.split(',').map((f: string) => {
+          return f.includes(':') ? f.split(':')[1] : f;
+        });
+      } else {
+        this.filterState.activeFilters = [];
       }
-      
       this.applyFilters();
     });
     this.subscription.add(routeSubscription);
@@ -153,20 +156,36 @@ export class AllRecipesComponent implements OnInit, OnDestroy {
   private applyFilters(): void {
     let filtered = [...this.recipes];
 
-    // Apply search filter
+    // DEBUG: log les recettes et les filtres actifs
+    console.log('Recettes reçues:', this.recipes);
+    console.log('Filtres actifs:', this.filterState.activeFilters);
+
+    // Recherche texte
     if (this.filterState.searchQuery.trim()) {
       const query = this.filterState.searchQuery.toLowerCase();
-      filtered = filtered.filter(recipe => 
+      filtered = filtered.filter(recipe =>
         recipe.nameRecipe.toLowerCase().includes(query) ||
         recipe.descriptionRecipe.toLowerCase().includes(query)
       );
     }
 
-    // Apply other filters (placeholder for future implementation)
-    // filtered = this.applyAdditionalFilters(filtered);
+    // Filtrage par tags (toutes les valeurs de filtres doivent être présentes dans tags)
+    if (this.filterState.activeFilters.length > 0) {
+      filtered = filtered.filter(recipe => {
+        // DEBUG: log les tags de chaque recette
+        console.log('Recipe:', recipe.nameRecipe, 'Tags:', recipe.tags);
+        if (!recipe.tags || recipe.tags.length === 0) return false;
+        // Toutes les valeurs de filtres doivent être présentes dans les tags de la recette
+        return this.filterState.activeFilters.every(filterValue =>
+          recipe.tags.some(tag => this.normalize(tag) === this.normalize(filterValue))
+        );
+      });
+    }
 
-    // Apply sorting
     filtered = this.applySorting(filtered);
+
+    // DEBUG: log le résultat du filtrage
+    console.log('Recettes filtrées:', filtered);
 
     this.filteredRecipes = filtered;
   }
@@ -182,6 +201,13 @@ export class AllRecipesComponent implements OnInit, OnDestroy {
       default:
         return recipes;
     }
+  }
+
+  private normalize(str: string): string {
+    return str
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
   }
 
   get hasResults(): boolean {

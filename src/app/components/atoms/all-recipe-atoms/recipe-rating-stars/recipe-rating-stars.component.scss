@@ -1,33 +1,33 @@
 .rating-stars {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.stars {
-  display: flex;
-  gap: 2px;
-}
-
-.star {
-  font-size: 0.9rem;
-  color: #ddd;
-  transition: color 0.3s ease;
   
-  &.filled {
-    color: #ffc107;
+  .stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
   }
   
-  &.half {
-    background: linear-gradient(90deg, #ffc107 50%, #ddd 50%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .star {
+    font-size: 1.25rem;
+    color: #FFD700; // Jaune pour les étoiles pleines
+    filter: drop-shadow(0 1px 1px #bfa60033);
+    margin-right: 1px;
+    
+    &.half {
+      color: #ffd900cb;
+      opacity: 0.6;
+    }
+    
+    &.empty {
+      color: #e0cfa7;
+    }
   }
-}
-
-.rating-text {
-  font-size: 0.8rem;
-  color: #666;
-  font-weight: 500;
+  
+  .rating-text {
+    font-size: 1rem;
+    margin-left: 6px;
+    color: #6B3E26;
+    font-weight: 500;
+  }
 }

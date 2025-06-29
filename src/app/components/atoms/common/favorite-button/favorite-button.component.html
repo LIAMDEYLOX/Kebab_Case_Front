@@ -1,0 +1,9 @@
+<button *ngIf="isAuthenticated" 
+        class="favorite-btn"
+        [ngClass]="{'active': isFavorite}"
+        [disabled]="loading"
+        (click)="toggleFavorite()"
+        [title]="isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'">
+  <span class="star-icon" *ngIf="!loading">{{ isFavorite ? '★' : '☆' }}</span>
+  <span class="loading-spinner" *ngIf="loading">⟳</span>
+</button>
